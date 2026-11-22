@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biostatistician Workbench: companion to Think Like a Biostatistician</title>
+<meta name="description" content="Eighteen free, plain-English teaching tools, one for each chapter of Think Like a Biostatistician: Plain-English Logic for Safety and Clinical Professionals. Educational use only. Fictional example data.">
+<link rel="canonical" href="https://abdu94-hash.github.io/biostatistician-workbench/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Biostatistician Workbench">
+<meta property="og:description" content="One plain-English teaching tool for each chapter of Think Like a Biostatistician. No install, no sign-in, fictional teaching numbers.">
+<meta property="og:url" content="https://abdu94-hash.github.io/biostatistician-workbench/">
+<meta property="og:image" content="https://abdu94-hash.github.io/biostatistician-workbench/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{
+  --serif: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ink:#1c2126; --ink2:#404b55; --muted:#6d7780;
+  --line:#d8d3c9; --line2:#ebe7df; --paper:#faf9f6; --card:#ffffff; --field:#ffffff;
+  --accent:#1f6f78; --accent2:#e6f1f2; --accent3:#c9e1e3;
+  --drug:#2a78d6; --comp:#eb6834; --good:#2c7a4b; --bad:#b03a2e;
+  --warnbg:#fdf7ea; --warnline:#c8a54a; --warnink:#6b5312;
+  --grid:#e6e2da;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#e8e6e1; --ink2:#c4c7c9; --muted:#9aa3aa;
+    --line:#3a4046; --line2:#2d3237; --paper:#161a1d; --card:#1e2327; --field:#14181b;
+    --accent:#5fb4bc; --accent2:#1d3134; --accent3:#2b4a4e;
+    --drug:#5b9cf0; --comp:#f2875a; --good:#5cbf84; --bad:#e8786b;
+    --warnbg:#2b2618; --warnline:#8b7535; --warnink:#e3cf91; --grid:#30363b;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#e8e6e1; --ink2:#c4c7c9; --muted:#9aa3aa;
+  --line:#3a4046; --line2:#2d3237; --paper:#161a1d; --card:#1e2327; --field:#14181b;
+  --accent:#5fb4bc; --accent2:#1d3134; --accent3:#2b4a4e;
+  --drug:#5b9cf0; --comp:#f2875a; --good:#5cbf84; --bad:#e8786b;
+  --warnbg:#2b2618; --warnline:#8b7535; --warnink:#e3cf91; --grid:#30363b;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.25;margin:0 0 .4em}
+h1{font-size:1.6rem} h2{font-size:1.4rem} h3{font-size:1.08rem;margin-top:1.4em}
+p{margin:0 0 .9em} a{color:var(--accent)}
+.muted{color:var(--muted)} .small{font-size:.84rem}
+[hidden]{display:none !important}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+header.top{border-bottom:1px solid var(--line);background:var(--card)}
+header.top .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:.4em 1em;padding-top:.7em;padding-bottom:.7em}
+.brand{font-family:var(--serif);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.sitename{font-family:var(--serif);font-weight:600;font-size:1.1rem;color:var(--ink);text-decoration:none}
+header.top nav{margin-left:auto;display:flex;gap:.5em;align-items:center}
+select.jump{max-width:15rem}
+button{font:inherit;font-size:.88rem;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:4px;padding:.42em .85em;cursor:pointer;min-height:36px}
+button:hover{background:var(--accent2);border-color:var(--accent3)}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+button.primary:disabled{opacity:.45;cursor:not-allowed}
+input,select,textarea{font:inherit;font-size:.95rem;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:4px;padding:.4em .5em;width:100%;min-height:36px}
+textarea{line-height:1.45;resize:vertical;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88rem}
+input:focus,select:focus,textarea:focus,button:focus{outline:2px solid var(--accent3);outline-offset:1px}
+label{display:block;font-size:.84rem;color:var(--ink2);margin-bottom:.25em}
+.hint{font-size:.78rem;color:var(--muted);margin-top:.2em}
+main{padding:1.6em 0 4em}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.8em;margin-top:1.2em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1em 1.05em;text-decoration:none;color:var(--ink);display:block}
+.card:hover{border-color:var(--accent);box-shadow:0 1px 0 var(--accent3)}
+.card .n{font-family:var(--serif);color:var(--accent);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+.card .t{font-family:var(--serif);font-weight:600;font-size:1.02rem;margin:.15em 0 .3em}
+.card .d{font-size:.86rem;color:var(--ink2)}
+.part{font-family:var(--serif);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:1.8em 0 .2em;border-bottom:1px solid var(--line2);padding-bottom:.3em}
+.chap{font-family:var(--serif);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.lede{color:var(--ink2);max-width:72ch}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1.1em 1.1em;margin:1em 0}
+.panel h3:first-child{margin-top:0}
+.fields{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75em 1em}
+.fields .wide{grid-column:1/-1}
+.grouphead{grid-column:1/-1;font-family:var(--serif);font-weight:600;font-size:.95rem;margin-top:.4em;padding-top:.5em;border-top:1px solid var(--line2);display:flex;align-items:center;gap:.5em}
+.grouphead:first-child{border-top:0;padding-top:0;margin-top:0}
+.sw{display:inline-block;width:.8em;height:.8em;border-radius:2px}
+.toolbar{display:flex;flex-wrap:wrap;gap:.5em;margin-top:1em}
+.result{font-size:1rem}
+.big{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.6em;margin:.4em 0 1em}
+.stat{border:1px solid var(--line2);border-radius:5px;padding:.6em .75em;background:var(--paper)}
+.stat .k{font-size:.76rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.stat .v{font-family:var(--serif);font-size:1.45rem;font-weight:600;line-height:1.2}
+.stat .s{font-size:.8rem;color:var(--ink2)}
+.say{background:var(--accent2);border-left:4px solid var(--accent);padding:.75em .95em;border-radius:0 5px 5px 0;margin:.8em 0}
+.say b{color:var(--accent)}
+.cant{background:var(--warnbg);border-left:4px solid var(--warnline);color:var(--warnink);padding:.7em .95em;border-radius:0 5px 5px 0;margin:.8em 0;font-size:.92rem}
+.why{border:1px solid var(--accent3);border-radius:5px;padding:.7em .95em;margin:.8em 0;font-size:.92rem}
+.why .h{font-weight:600;color:var(--accent);margin-bottom:.2em}
+table.t{border-collapse:collapse;width:100%;font-size:.9rem;margin:.5em 0}
+table.t th,table.t td{border-bottom:1px solid var(--line2);padding:.4em .5em;text-align:left;vertical-align:top}
+table.t th{font-size:.78rem;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);font-weight:600}
+table.t td.num{text-align:right;font-variant-numeric:tabular-nums}
+.tablewrap{overflow-x:auto}
+svg.chart{width:100%;max-width:680px;height:auto;display:block;margin:.4em 0}
+svg.chart text{font-family:var(--sans);fill:var(--ink2)}
+.legend{display:flex;flex-wrap:wrap;gap:1em;font-size:.84rem;color:var(--ink2)}
+details.reveal{border:1px solid var(--line2);border-radius:5px;padding:.55em .8em;margin:.45em 0;background:var(--paper)}
+details.reveal summary{cursor:pointer;font-weight:600}
+details.reveal p{margin:.5em 0 0}
+.backlink{font-size:.88rem;text-decoration:none}
+.pn{display:flex;justify-content:space-between;gap:1em;margin-top:2em;font-size:.9rem}
+footer{border-top:1px solid var(--line);padding:1.4em 0 3em;font-size:.8rem;color:var(--muted)}
+.notice{background:var(--warnbg);border:1px solid var(--warnline);color:var(--warnink);border-radius:5px;padding:.6em .8em;font-size:.84rem;margin:.6em 0}
+/* gate */
+.gate{max-width:760px;margin:0 auto;padding:5vh 16px 5rem}
+.gate h1{font-size:1.8rem;margin-bottom:.15em}
+.gate .sub{font-family:var(--serif);font-style:italic;color:var(--ink2);margin-bottom:1.6em}
+.gate ul{padding-left:1.2em;color:var(--ink2)} .gate li{margin-bottom:.5em}
+.ackbox{display:flex;gap:.6em;align-items:flex-start;background:var(--accent2);border:1px solid var(--accent3);border-radius:4px;padding:.8em .9em;margin:1.2em 0}
+.ackbox input{width:20px;height:20px;min-height:0;flex:0 0 auto;margin-top:.1em}
+.ackbox label{margin:0;font-size:.95rem;color:var(--ink)}
+@media print{header.top nav,.toolbar,.pn,.gate,.noprint{display:none !important} body{background:#fff} .panel{break-inside:avoid}}
+@media (max-width:520px){h1{font-size:1.35rem} .stat .v{font-size:1.25rem}}
+</style>
+</head>
+<body>
+
+<div id="gate" class="gate" hidden>
+  <div class="brand">Selim Medical Press</div>
+  <h1>Biostatistician Workbench</h1>
+  <div class="sub">Companion tools to <em>Think Like a Biostatistician: Plain-English Logic for Safety and Clinical Professionals</em> by Dr Hafez Selim, MD, PhD</div>
+  <div class="panel">
+    <p><strong>Before you begin.</strong> These tools help you see the logic in each chapter. They do the arithmetic so you do not have to. They do not make decisions.</p>
+    <ul>
+      <li><strong>Educational use only.</strong> Not medical advice, not clinical decision support, and not for the care of any patient.</li>
+      <li><strong>Not validated software.</strong> Not a medical device and not for regulatory submissions. Check any number you use elsewhere with your statistician.</li>
+      <li><strong>All example numbers are made up</strong> for teaching, like the numbers in the book. They describe no real product, trial or patient.</li>
+      <li><strong>Nothing leaves your browser.</strong> There is no sign-in, no tracking, and nothing you type is sent anywhere.</li>
+      <li>The views expressed are the author's personal views only and do not represent any current or former employer, client, institution, professional society or regulatory body.</li>
+    </ul>
+    <div class="ackbox"><input type="checkbox" id="ack"><label for="ack">I understand that this is an educational tool only.</label></div>
+    <button class="primary" id="begin" disabled>Begin</button>
+  </div>
+</div>
+
+<div id="app" hidden>
+<header class="top"><div class="wrap">
+  <div><div class="brand">Selim Medical Press</div><a class="sitename" href="#">Biostatistician Workbench</a></div>
+  <nav class="noprint">
+    <select class="jump" id="jump" aria-label="Go to a chapter tool"></select>
+    <button id="theme" title="Switch light or dark" aria-label="Switch light or dark">Light / dark</button>
+  </nav>
+</div></header>
+<main><div class="wrap" id="view"></div></main>
+<footer><div class="wrap">
+  Companion to <em>Think Like a Biostatistician: Plain-English Logic for Safety and Clinical Professionals</em>, Dr Hafez Selim, MD, PhD, Selim Medical Press.
+  Educational use only. Not medical advice. Fictional example data. Personal views of the author only.
+  Nothing you type leaves your browser. Corrections: <a href="https://github.com/abdu94-hash/biostatistician-workbench/issues">open an issue on GitHub</a>.
+</div></footer>
+</div>
+
+<script>
+"use strict";
+/* ---------------- helpers ---------------- */
+const $=(s,r=document)=>r.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function num(x,d=1){ if(x===null||!isFinite(x)) return '—'; return Number(x).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}); }
+function nice(x,d=1){ if(x===null||!isFinite(x)) return '—'; return Number(x).toLocaleString('en-US',{maximumFractionDigits:d}); }
+const pct=(x,d=1)=>(x===null||!isFinite(x))?'—':num(x*100,d)+'%';
+const clamp=(x,a,b)=>Math.min(b,Math.max(a,x));
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const stat=(k,v,s='')=>`<div class="stat"><div class="k">${k}</div><div class="v">${v}</div>${s?`<div class="s">${s}</div>`:''}</div>`;
+const say=h=>`<div class="say">${h}</div>`;
+const cant=h=>`<div class="cant"><strong>What this cannot tell you.</strong> ${h}</div>`;
+const why=(a,b)=>`<div class="why"><div class="h">Why it matters</div><div><strong>The decision it affects:</strong> ${a}</div><div><strong>If it is ignored:</strong> ${b}</div></div>`;
+function ratioWords(r){ if(!isFinite(r)) return 'cannot be worked out (a zero is in the way)'; if(Math.abs(r-1)<0.05) return 'about the same'; return r>1?`about ${nice(r,1)} times as high`:`about ${nice(r,2)} times as high (lower)`; }
+
+function VW(){ const el=document.getElementById('out'); const w=el?el.clientWidth:640; return Math.max(320,Math.min(640,w)); }
+/* Horizontal bars. items: [{label,value,color,text}] */
+function bars(items,opt={}){
+  const W=VW(),rowH=34,lab=Math.min(opt.labelW||190,W*0.38),pad=14,H=items.length*rowH+pad*2+(opt.axis?18:0);
+  const max=opt.max||Math.max(...items.map(i=>i.value),1e-9)*1.15;
+  let s=`<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(opt.aria||'Bar chart')}">`;
+  items.forEach((it,i)=>{
+    const y=pad+i*rowH, w=Math.max(0,(W-lab-90)*clamp(it.value/max,0,1));
+    s+=`<text x="${lab-8}" y="${y+rowH/2+4}" text-anchor="end" font-size="13">${esc(it.label)}</text>`;
+    s+=`<rect x="${lab}" y="${y+6}" width="${w}" height="${rowH-12}" rx="3" fill="${it.color}"></rect>`;
+    s+=`<text x="${lab+w+6}" y="${y+rowH/2+4}" font-size="13" font-weight="600">${esc(it.text)}</text>`;
+  });
+  return s+'</svg>';
+}
+/* Interval on an axis. rows:[{label,est,lo,hi,color}] */
+function intervals(rows,opt={}){
+  const W=VW(),lab=Math.min(opt.labelW||150,W*0.3),rowH=40,top=10,H=rows.length*rowH+top+34;
+  let lo=Math.min(opt.ref??0,...rows.map(r=>r.lo),opt.margin??Infinity), hi=Math.max(opt.ref??0,...rows.map(r=>r.hi),opt.margin??-Infinity);
+  const span=(hi-lo)||1; lo-=span*.12; hi+=span*.12;
+  const X=v=>lab+(W-lab-20)*(v-lo)/(hi-lo);
+  let s=`<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(opt.aria||'Interval chart')}">`;
+  const ref=opt.ref??0;
+  s+=`<line x1="${X(ref)}" x2="${X(ref)}" y1="${top-4}" y2="${H-26}" stroke="${css('--muted')}" stroke-dasharray="4 3"/>`;
+  s+=`<text x="${X(ref)}" y="${H-10}" text-anchor="middle" font-size="12">${esc(opt.refLabel||'no difference')}</text>`;
+  if(opt.margin!=null){ s+=`<line x1="${X(opt.margin)}" x2="${X(opt.margin)}" y1="${top-4}" y2="${H-26}" stroke="${css('--bad')}" stroke-width="2"/><text x="${X(opt.margin)}" y="${H-10}" text-anchor="middle" font-size="12" fill="${css('--bad')}">${esc(opt.marginLabel||'margin')}</text>`; }
+  rows.forEach((r,i)=>{ const y=top+i*rowH+rowH/2;
+    s+=`<text x="${lab-8}" y="${y+4}" text-anchor="end" font-size="13">${esc(r.label)}</text>`;
+    s+=`<line x1="${X(r.lo)}" x2="${X(r.hi)}" y1="${y}" y2="${y}" stroke="${r.color}" stroke-width="4" stroke-linecap="round"/>`;
+    s+=`<circle cx="${X(r.est)}" cy="${y}" r="7" fill="${r.color}"/>`;
+    if(r.text) s+=`<text x="${X(r.hi)+8}" y="${y-8}" font-size="12">${esc(r.text)}</text>`;
+  });
+  return s+'</svg>';
+}
+/* Simple x-y line/step chart. series:[{pts:[[x,y]],color,step,label}] */
+function lineChart(series,opt={}){
+  const W=VW(),H=Math.round((opt.h||260)*(W<500?0.9:1)),l=48,r=16,t=14,b=40;
+  const xs=series.flatMap(s=>s.pts.map(p=>p[0])), ys=series.flatMap(s=>s.pts.map(p=>p[1]));
+  const x0=opt.x0??Math.min(...xs), x1=opt.x1??Math.max(...xs), y0=opt.y0??Math.min(0,...ys), y1=opt.y1??Math.max(...ys);
+  const X=v=>l+(W-l-r)*(v-x0)/((x1-x0)||1), Y=v=>t+(H-t-b)*(1-(v-y0)/((y1-y0)||1));
+  let s=`<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(opt.aria||'Line chart')}">`;
+  const yt=opt.yTicks||[y0,(y0+y1)/2,y1];
+  yt.forEach(v=>{ s+=`<line x1="${l}" x2="${W-r}" y1="${Y(v)}" y2="${Y(v)}" stroke="${css('--grid')}"/><text x="${l-6}" y="${Y(v)+4}" text-anchor="end" font-size="11">${esc(opt.yFmt?opt.yFmt(v):nice(v))}</text>`; });
+  (opt.xTicks||[x0,x1]).forEach(v=>{ s+=`<text x="${X(v)}" y="${H-b+16}" text-anchor="middle" font-size="11">${esc(opt.xFmt?opt.xFmt(v):nice(v))}</text>`; });
+  if(opt.xLabel) s+=`<text x="${(l+W-r)/2}" y="${H-6}" text-anchor="middle" font-size="12">${esc(opt.xLabel)}</text>`;
+  (opt.hlines||[]).forEach(h=>{ s+=`<line x1="${l}" x2="${W-r}" y1="${Y(h.y)}" y2="${Y(h.y)}" stroke="${h.color}" stroke-dasharray="5 4" stroke-width="1.5"/><text x="${W-r}" y="${Y(h.y)-5}" text-anchor="end" font-size="11" fill="${h.color}">${esc(h.label)}</text>`; });
+  series.forEach(se=>{ let d=''; se.pts.forEach((p,i)=>{ if(i===0) d+=`M${X(p[0])},${Y(p[1])}`; else if(se.step) d+=`H${X(p[0])}V${Y(p[1])}`; else d+=`L${X(p[0])},${Y(p[1])}`; });
+    s+=`<path d="${d}" fill="none" stroke="${se.color}" stroke-width="2.5"/>`;
+    if(se.dots) se.pts.forEach(p=>{ s+=`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="3.5" fill="${se.color}"/>`; });
+    (se.marks||[]).forEach(p=>{ s+=`<circle cx="${X(p[0])}" cy="${Y(p[1])}" r="6" fill="none" stroke="${se.color}" stroke-width="2"/>`; });
+  });
+  return s+'</svg>';
+}
+function legend(items){ return `<div class="legend">${items.map(([c,t])=>`<span><span class="sw" style="background:${c}"></span> ${esc(t)}</span>`).join('')}</div>`; }
+function parseRows(txt,minCols){ return txt.split(/\n/).map(l=>l.trim()).filter(l=>l&&!l.startsWith('#')).map(l=>l.split(/[,;\t]+/).map(x=>x.trim())).filter(r=>r.length>=minCols); }
+
+/* ---------------- tools ---------------- */
+const PARTS={1:'Part I · What are we comparing?',5:'Part II · How big, how sure, how many?',10:'Part III · What question is the trial answering?',13:'Part IV · Reading safety data',16:'Part V · Beyond the trial'};
+const D=()=>css('--drug'), C=()=>css('--comp');
+const TOOLS=[];
+function tool(o){ TOOLS.push(o); }
+</script>
+<script>
+"use strict";
+/* Each tool opens with its chapter's own fictional teaching numbers. */
+
+/* ---- Chapter 1 ---- */
+tool({n:1, chapter:'Start with the decision', name:'Question sharpener',
+ blurb:'Turn “Is the drug safe?” into a four-part question, and see how the time window changes the answer.',
+ intro:'A vague question is a blurry photograph. Fill in the four parts of a useful safety question: for whom, which harm, compared with what, and over what period. Then see how choosing a different window changes the size of the gap in the same trial.',
+ fields:[
+  {type:'group',label:'The four parts of the question'},
+  {k:'who',type:'text',label:'1. For whom?',def:'adults with a chronic inflammatory disease in the phase 3 trial',wide:true},
+  {k:'harm',type:'text',label:'2. Which harm, defined how?',def:'serious infection (at least one per person)',wide:true},
+  {k:'vs',type:'text',label:'3. Compared with what?',def:'the control arm',wide:true},
+  {k:'win',type:'select',str:true,label:'4. Over what period?',def:'early',options:[['early','The first window (weeks 1 to 4)'],['whole','The whole study (24 weeks)']]},
+  {type:'group',label:'New drug',color:D},
+  {k:'nA',label:'People in the group',def:200,min:1},
+  {k:'eA1',label:'People with the harm in the first window',def:6,min:0},
+  {k:'eA2',label:'People with the harm over the whole study',def:8,min:0},
+  {type:'group',label:'Comparator',color:C},
+  {k:'nB',label:'People in the group',def:200,min:1},
+  {k:'eB1',label:'People with the harm in the first window',def:1,min:0},
+  {k:'eB2',label:'People with the harm over the whole study',def:4,min:0},
+  {k:'wl',type:'text',label:'Name of the first window',def:'weeks 1 to 4'},
+  {k:'wl2',type:'text',label:'Name of the whole period',def:'24 weeks'}
+ ],
+ calc(v){
+  const a1=v.eA1/v.nA,b1=v.eB1/v.nB,a2=v.eA2/v.nA,b2=v.eB2/v.nB;
+  const early=v.win==='early', a=early?a1:a2, b=early?b1:b2, wname=early?v.wl:v.wl2;
+  return say(`<b>Your sharpened question:</b> “In ${esc(v.who)}, how does the risk of ${esc(v.harm)} on the new drug compare with ${esc(v.vs)}, over ${esc(wname)}?”`)+
+  `<div class="big">${stat('New drug, '+esc(wname),pct(a),`${v.eA1!=null?(early?v.eA1:v.eA2):''} of ${v.nA} people`)}${stat('Comparator, '+esc(wname),pct(b),`${early?v.eB1:v.eB2} of ${v.nB} people`)}${stat('Gap',num((a-b)*100,1)+' points',`ratio ${nice(a/b,1)}`)}</div>`+
+  bars([{label:'New drug, '+v.wl,value:a1,color:D(),text:pct(a1)},{label:'Comparator, '+v.wl,value:b1,color:C(),text:pct(b1)},{label:'New drug, '+v.wl2,value:a2,color:D(),text:pct(a2)},{label:'Comparator, '+v.wl2,value:b2,color:C(),text:pct(b2)}],{aria:'Risk in each window',labelW:230})+
+  `<p>Same trial, two windows. Over ${esc(v.wl)} the new drug's risk is ${nice(a1/b1,1)} times the comparator's (${pct(a1)} versus ${pct(b1)}). Over ${esc(v.wl2)} it is ${nice(a2/b2,1)} times (${pct(a2)} versus ${pct(b2)}). Which one is “the answer” depends on which question you wrote down first.</p>`+
+  cant('Whether the gap is bigger than chance alone would produce. Chapters 7 and 8 deal with that.')+
+  why('Which number the team argues about, before anyone looks at a table.','People pick whichever window supports their first instinct, and two people can be “right” about different questions.');
+ }});
+
+/* ---- Chapter 2 ---- */
+tool({n:2, chapter:'Which study design answers which question?', name:'Evidence source matcher',
+ blurb:'Compare a spontaneous reporting rate with a registry incidence, and match questions to the right source.',
+ intro:'Trials, registries and spontaneous reports each see a different part of the picture. Put in the reports received and the number of products in use, then what a registry followed over time. The tool shows roughly what share of events ever reached the reporting system.',
+ fields:[
+  {type:'group',label:'Spontaneous reports'},
+  {k:'rep',label:'Reports of the event received',def:60,min:0},
+  {k:'use',label:'Products in use (devices implanted, or patients treated)',def:60000,min:1},
+  {type:'group',label:'Registry that follows patients over time'},
+  {k:'reg',label:'Events seen in the registry',def:144,min:0},
+  {k:'regN',label:'Patients followed in the registry',def:12000,min:1},
+  {k:'yrs',label:'Years of follow-up',def:5,min:0}
+ ],
+ calc(v){
+  const rr=v.rep/v.use, inc=v.reg/v.regN, f=inc/rr;
+  return `<div class="big">${stat('Reporting rate',nice(rr*1000,2)+' per 1,000',`${v.rep} reports ÷ ${v.use.toLocaleString()} in use`)}${stat('Registry incidence',nice(inc*1000,2)+' per 1,000',`over ${v.yrs} years`)}${stat('Registry ÷ reports',isFinite(f)?nice(f,1)+'×':'—','how much higher the registry figure is')}</div>`+
+  bars([{label:'Spontaneous reports',value:rr*1000,color:C(),text:nice(rr*1000,2)+' per 1,000'},{label:'Registry',value:inc*1000,color:D(),text:nice(inc*1000,2)+' per 1,000'}],{aria:'Reporting rate versus registry incidence'})+
+  say(isFinite(f)&&f>1?`Roughly <b>one event in ${nice(f,0)}</b> reached the spontaneous reporting system. A reporting rate is a floor, not a rate of harm: it counts who chose to report, not how often the harm happened.`:`Here the two figures are similar. That is unusual: spontaneous reporting normally captures only a fraction of events.`)+
+  cant('Whether the product causes more events than other products. That needs a comparison group (Chapter 17).')+
+  why('Which source can answer the question on the table: how often, whether it is caused, or whether something new is appearing.','Reports are read as if they were a trial, or a small trial is read as if it could see every rare harm.');
+ },
+ extra(){ const q=[
+  ['Does the device cause more lead fractures than having no device, in a fair comparison?','The randomized trial, because randomization makes the groups comparable. But 800 patients for one year may be too few to see a rare harm.'],
+  ['How often do leads fracture over five years in everyday practice?','The registry. It follows a known number of people over time, so it has a denominator and long follow-up.'],
+  ['Is a new, unexpected kind of failure starting to appear since launch?','Spontaneous reports. They are fast and cover everyone using the product, which makes them good at raising alarms, not at measuring how often.'],
+  ['Is fracture more common with this lead than with a competitor’s lead?','A well-designed comparative registry or observational study (Chapter 17). Reports cannot compare rates.']];
+  return `<h3>Quick check: which source fits?</h3><p class="muted small">Think of your answer, then open each one.</p>`+q.map(([a,b])=>`<details class="reveal"><summary>${esc(a)}</summary><p>${esc(b)}</p></details>`).join(''); }});
+
+/* ---- Chapter 3 ---- */
+tool({n:3, chapter:'Who is in the analysis?', name:'Denominator explorer',
+ blurb:'See how everyone randomized, the per-protocol group and the safety group give different answers.',
+ intro:'The same trial can have three different denominators. Put in how many people are in each group and how many responded or had the side effect. The tool shows why the per-protocol result often looks better, and why a safety percentage must be divided by the people who actually took the drug.',
+ fields:[
+  {type:'group',label:'Everyone randomized (intention to treat)'},
+  {k:'rA',label:'New drug: randomized',def:300},{k:'xA',label:'New drug: responders',def:150},
+  {k:'rB',label:'Control: randomized',def:300},{k:'xB',label:'Control: responders',def:120},
+  {type:'group',label:'Per protocol (only those who followed the plan)'},
+  {k:'pA',label:'New drug: in per-protocol group',def:258},{k:'yA',label:'New drug: responders',def:140},
+  {k:'pB',label:'Control: in per-protocol group',def:270},{k:'yB',label:'Control: responders',def:111},
+  {type:'group',label:'Safety group (everyone who took at least one dose)'},
+  {k:'sA',label:'New drug: took at least one dose',def:288},{k:'ae',label:'New drug: people with rash',def:24}
+ ],
+ calc(v){
+  const i1=v.xA/v.rA,i2=v.xB/v.rB,p1=v.yA/v.pA,p2=v.yB/v.pB, dI=(i1-i2)*100, dP=(p1-p2)*100;
+  const right=v.ae/v.sA, wrong=v.ae/v.rA;
+  return `<div class="tablewrap"><table class="t"><tr><th>Group</th><th>New drug</th><th>Control</th><th>Difference</th></tr>
+  <tr><td>Everyone randomized</td><td class="num">${pct(i1)}</td><td class="num">${pct(i2)}</td><td class="num">${num(dI,1)} points</td></tr>
+  <tr><td>Per protocol</td><td class="num">${pct(p1)}</td><td class="num">${pct(p2)}</td><td class="num">${num(dP,1)} points</td></tr></table></div>`+
+  bars([{label:'Randomized: new drug',value:i1,color:D(),text:pct(i1)},{label:'Randomized: control',value:i2,color:C(),text:pct(i2)},{label:'Per protocol: new drug',value:p1,color:D(),text:pct(p1)},{label:'Per protocol: control',value:p2,color:C(),text:pct(p2)}],{max:1,labelW:200,aria:'Response by analysis group'})+
+  say(dP>dI?`The per-protocol difference (${num(dP,1)} points) is larger than the randomized one (${num(dI,1)} points). That is not extra good news: it usually means the people who stopped or deviated were doing less well, and leaving them out flatters the drug.`:`Here the per-protocol and randomized differences are similar (${num(dP,1)} and ${num(dI,1)} points), which suggests leaving people out did not change the picture much.`)+
+  `<h3>The safety denominator</h3><div class="big">${stat('Divided by those who took the drug',pct(right),`${v.ae} of ${v.sA}`)}${stat('Divided by all randomized (wrong)',pct(wrong),`${v.ae} of ${v.rA}`)}</div>
+  <p>${v.rA-v.sA} people were randomized but never took a dose, so they could not have had a reaction. Counting them makes the side effect look a little rarer than it is.</p>`+
+  cant('Why people left the per-protocol group. That needs the reasons for exclusion, arm by arm.')+
+  why('Which result answers “what happens if we offer this drug?” and which percentage belongs in the safety tables.','A flattering per-protocol number is presented as the effect, or side-effect rates are diluted by people who never took the drug.');
+ }});
+
+/* ---- Chapter 4 ---- */
+tool({n:4, chapter:'What exactly is the outcome?', name:'Definition dilution',
+ blurb:'Watch a clear safety signal shrink as unrelated background complaints are added to the definition.',
+ intro:'How an event is defined can create, hide or shrink a signal. Start with a narrow, specific definition of an infusion reaction, then add the background complaints that a broad definition sweeps in. Move the slider to see the ratio fall even though the real reactions are still there.',
+ fields:[
+  {type:'group',label:'New drug',color:D},
+  {k:'nA',label:'People in the group',def:250},{k:'cA',label:'Clear reactions (narrow definition)',def:15},{k:'bA',label:'Extra people added by the broad definition',def:31},
+  {type:'group',label:'Placebo',color:C},
+  {k:'nB',label:'People in the group',def:250},{k:'cB',label:'Clear reactions (narrow definition)',def:3},{k:'bB',label:'Extra people added by the broad definition',def:35},
+  {type:'group',label:'How much background to include'},
+  {k:'mix',type:'select',label:'Share of the background complaints swept in',def:1,options:[[0,'None (narrow definition only)'],[0.25,'A quarter'],[0.5,'Half'],[1,'All of it (the broad definition)'],[2,'Twice as much (an even broader definition)']]}
+ ],
+ calc(v){
+  const m=v.mix, nA=v.cA/v.nA, nB=v.cB/v.nB, A=(v.cA+m*v.bA)/v.nA, B=(v.cB+m*v.bB)/v.nB;
+  return `<div class="big">${stat('Narrow: new drug vs placebo',`${pct(nA)} vs ${pct(nB)}`,`ratio ${nice(nA/nB,1)}`)}${stat('With your choice of background',`${pct(A)} vs ${pct(B)}`,`ratio ${nice(A/B,2)}`)}</div>`+
+  bars([{label:'Narrow: new drug',value:nA,color:D(),text:pct(nA)},{label:'Narrow: placebo',value:nB,color:C(),text:pct(nB)},{label:'Your definition: new drug',value:A,color:D(),text:pct(A)},{label:'Your definition: placebo',value:B,color:C(),text:pct(B)}],{labelW:220,aria:'Event percentages by definition'})+
+  say(`With the narrow definition the new drug's rate is <b>${nice(nA/nB,1)} times</b> placebo's. With your definition it is <b>${nice(A/B,2)} times</b>. The ${v.cA} real reactions have not gone anywhere; they are now a small part of a large, similar pile.`)+
+  cant('Whether the narrow definition was set before anyone saw the data. A definition chosen after looking can manufacture a difference.')+
+  why('Whether a real reaction is visible in the tables, and whether it belongs in the investigator brochure.','A real signal vanishes in noise, or a false one is made by picking the definition after looking.');
+ }});
+
+/* ---- Chapter 5 ---- */
+tool({n:5, chapter:'How to read a summary', name:'Average versus outlier',
+ blurb:'Paste lab values and see how one extreme person moves the average but not the median.',
+ intro:'A comfortable average can hide a dangerous extreme. Type or paste one value per person (any separator). The tool shows every person as a dot against the upper limit of normal, and the average with and without the most extreme person.',
+ fields:[
+  {k:'vals',type:'textarea',rows:3,label:'Values, one per person (for example ALT in units per litre)',def:'18, 22, 25, 27, 28, 30, 31, 33, 35, 240'},
+  {k:'uln',label:'Upper limit of normal (ULN)',def:40,min:0},
+  {k:'thr',label:'Threshold to flag, as times the ULN',def:3,min:0}
+ ],
+ calc(v){
+  const xs=v.vals.split(/[^0-9.\-]+/).map(parseFloat).filter(x=>isFinite(x));
+  if(!xs.length) return '<p class="muted">Enter at least one value.</p>';
+  const s=[...xs].sort((a,b)=>a-b), n=s.length, mean=s.reduce((a,b)=>a+b,0)/n, med=n%2?s[(n-1)/2]:(s[n/2-1]+s[n/2])/2;
+  const mx=s[n-1], wo=n>1?(mean*n-mx)/(n-1):NaN, flag=xs.filter(x=>x>v.thr*v.uln).length;
+  const W=640,H=120,l=20,r=20, hi=Math.max(mx,v.uln*v.thr)*1.08, X=x=>l+(W-l-r)*x/hi;
+  let svg=`<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Every value as a dot"><line x1="${l}" x2="${W-r}" y1="70" y2="70" stroke="${css('--line')}"/>`;
+  svg+=`<line x1="${X(v.uln)}" x2="${X(v.uln)}" y1="20" y2="90" stroke="${css('--muted')}" stroke-dasharray="4 3"/><text x="${X(v.uln)}" y="14" text-anchor="middle" font-size="11">ULN</text>`;
+  svg+=`<line x1="${X(v.uln*v.thr)}" x2="${X(v.uln*v.thr)}" y1="20" y2="90" stroke="${css('--bad')}" stroke-dasharray="4 3"/><text x="${X(v.uln*v.thr)}" y="14" text-anchor="middle" font-size="11" fill="${css('--bad')}">${nice(v.thr)}× ULN</text>`;
+  const seen={}; s.forEach(x=>{ const k=Math.round(X(x)/6); seen[k]=(seen[k]||0)+1; svg+=`<circle cx="${X(x)}" cy="${70-(seen[k]-1)*9}" r="5" fill="${x>v.thr*v.uln?css('--bad'):D()}" opacity=".85"/>`; });
+  svg+=`<polygon points="${X(mean)},78 ${X(mean)-6},90 ${X(mean)+6},90" fill="${css('--ink2')}"/><text x="${X(mean)}" y="106" text-anchor="middle" font-size="11">average</text>`;
+  svg+=`<polygon points="${X(med)},78 ${X(med)-6},90 ${X(med)+6},90" fill="${css('--accent')}"/><text x="${X(med)}" y="118" text-anchor="middle" font-size="11" fill="${css('--accent')}">median</text></svg>`;
+  return `<div class="big">${stat('Average (mean)',nice(mean,1),`${n} people`)}${stat('Middle value (median)',nice(med,1))}${stat('Average without the highest',nice(wo,1),`highest is ${nice(mx,1)}`)}${stat('Highest as × ULN',nice(mx/v.uln,1)+'×')}${stat(`People above ${nice(v.thr)}× ULN`,flag,`of ${n}`)}</div>`+svg+
+  say(`One person at ${nice(mx,1)} moves the average by about <b>${nice(mean-wo,1)}</b> units, while the median stays at ${nice(med,1)}. ${flag?`<b>${flag}</b> ${flag===1?'person is':'people are'} above ${nice(v.thr)} times the upper limit of normal. That is where liver injury shows up, and no average will show it.`:'Nobody crosses the threshold here.'}`)+
+  cant('Whether the high value was caused by the drug. That needs timing, other tests and the clinical story (Chapter 15).')+
+  why('Whether to ask for every participant’s values before signing off a laboratory finding.','A reassuring average is taken as proof of safety while a few patients have a serious injury.');
+ },
+ extra(){ return `<h3>Count the people who moved: a shift table</h3><p>Instead of averages, count how many people crossed a line. These are the chapter's supplied numbers.</p><div class="tablewrap"><table class="t"><tr><th>Baseline → worst on treatment</th><th>New drug (200)</th><th>Placebo (200)</th></tr><tr><td>Normal → normal</td><td class="num">176</td><td class="num">183</td></tr><tr><td>Normal → above 1 to 3 × ULN</td><td class="num">18</td><td class="num">15</td></tr><tr><td><strong>Normal → above 3 × ULN</strong></td><td class="num"><strong>4</strong></td><td class="num"><strong>0</strong></td></tr><tr><td>Above ULN at baseline</td><td class="num">2</td><td class="num">2</td></tr></table></div><p class="small muted">Four people against none is the line a safety reviewer reads first.</p>`; }});
+
+/* ---- Chapter 6 ---- */
+tool({n:6, chapter:'How big is the difference?', name:'Relative versus absolute risk',
+ blurb:'Turn “double the risk” into what it means per 1,000 people, with the number needed to harm.',
+ intro:'A big relative change can be a tiny absolute one. Put in how many people out of 1,000 have the harm on each product over a stated time. The tool gives the risk ratio, the extra cases per 1,000, the number needed to harm, and the odds ratio, and draws 1,000 people for each product.',
+ fields:[
+  {k:'new',label:'New product: cases per 1,000 people',def:2,min:0,max:1000},
+  {k:'old',label:'Older product: cases per 1,000 people',def:1,min:0,max:1000},
+  {k:'per',type:'text',label:'Over what period?',def:'one year'},
+  {k:'what',type:'text',label:'Which harm?',def:'blood clot'}
+ ],
+ calc(v){
+  const a=v.new/1000,b=v.old/1000, rr=a/b, rd=a-b, nnh=1/Math.abs(rd), or=(a/(1-a))/(b/(1-b));
+  function grid(k,col){ let s=`<svg class="chart" viewBox="0 0 400 168" role="img" aria-label="1,000 people">`; for(let i=0;i<1000;i++){ const x=(i%50)*8, y=Math.floor(i/50)*8; s+=`<rect x="${x}" y="${y}" width="6.5" height="6.5" rx="1" fill="${i<k?col:css('--grid')}"/>`; } return s+'</svg>'; }
+  const extra=rd>0?`<b>${nice(rd*1000,1)} extra ${esc(v.what)}${rd*1000===1?'':'s'}</b> per 1,000 people over ${esc(v.per)}`:rd<0?`<b>${nice(-rd*1000,1)} fewer</b> per 1,000 people over ${esc(v.per)}`:'no difference';
+  return `<div class="big">${stat('Risk ratio (relative)',nice(rr,2),ratioWords(rr))}${stat('Risk difference (absolute)',(rd>=0?'+':'')+nice(rd*1000,2)+' per 1,000')}${stat(rd>0?'Number needed to harm':'Number needed to treat',isFinite(nnh)?nice(nnh,0):'—',isFinite(nnh)?`people for ${esc(v.per)} per one ${rd>0?'extra':'fewer'} case`:'')}${stat('Odds ratio',nice(or,2),'close to the risk ratio only when the event is rare')}</div>`+
+  `<div class="fields"><div><div class="small"><span class="sw" style="background:${C()}"></span> Older product: ${nice(v.old,1)} in 1,000</div>${grid(Math.round(v.old),C())}</div><div><div class="small"><span class="sw" style="background:${D()}"></span> New product: ${nice(v.new,1)} in 1,000</div>${grid(Math.round(v.new),D())}</div></div>`+
+  say(`Two honest lines for the journalist: “The risk of a ${esc(v.what)} was about ${nice(rr,1)} times as high on the new product. In absolute terms, that is ${extra}.” Always give both, with the baseline and the time period.`)+
+  (Math.abs(or-rr)/rr>0.1?`<p>Note: because the event is common here, the odds ratio (${nice(or,2)}) is noticeably larger than the risk ratio (${nice(rr,2)}). Reading an odds ratio as a risk ratio would exaggerate the effect.</p>`:'')+
+  cant('Whether the extra risk is outweighed by the product’s benefits, or how precise the estimate is. Those are Chapters 18 and 7.')+
+  why('What patients, prescribers and the public are told about the size of a harm.','“Double the risk” frightens people away from a useful product, or a large absolute harm is hidden behind a modest ratio.');
+ }});
+
+/* ---- Chapter 7 ---- */
+tool({n:7, chapter:'How sure can we be?', name:'Confidence interval reader',
+ blurb:'See the same 4-point difference as a narrow or a foggy range, and test it against a non-inferiority margin.',
+ intro:'Read a result as a range of plausible truth, not a single number. Put in the share with the event in each arm and the number of people per arm. The tool draws the 95% confidence interval for the difference, for your study and for the same result in a study one fifth the size.',
+ fields:[
+  {k:'p1',label:'New drug: % with the event',def:10,min:0,max:100},
+  {k:'p2',label:'Comparator: % with the event',def:6,min:0,max:100},
+  {k:'n',label:'People per arm',def:500,min:2},
+  {k:'m',label:'Non-inferiority margin, in points (leave 0 for none)',def:0,min:0,hint:'The largest excess of harm judged acceptable, set before the study.'}
+ ],
+ calc(v){
+  function ci(n){ const a=v.p1/100,b=v.p2/100, se=Math.sqrt(a*(1-a)/n+b*(1-b)/n), d=a-b; return {d:d*100,lo:(d-1.96*se)*100,hi:(d+1.96*se)*100,se}; }
+  const A=ci(v.n), n2=Math.max(2,Math.round(v.n/5)), B=ci(n2);
+  const word=r=>r.lo>0?'excludes zero: the data point to more events on the new drug':r.hi<0?'excludes zero: the data point to fewer events on the new drug':'includes zero: the data are too foggy to tell the direction';
+  const rows=[{label:`${v.n} per arm`,est:A.d,lo:A.lo,hi:A.hi,color:D(),text:`${num(A.lo,1)} to ${num(A.hi,1)}`},{label:`${n2} per arm`,est:B.d,lo:B.lo,hi:B.hi,color:C(),text:`${num(B.lo,1)} to ${num(B.hi,1)}`}];
+  let h=`<div class="big">${stat('Best estimate of the difference',(A.d>=0?'+':'')+num(A.d,1)+' points')}${stat(`95% interval, ${v.n} per arm`,`${num(A.lo,1)} to ${num(A.hi,1)}`,'points')}${stat(`95% interval, ${n2} per arm`,`${num(B.lo,1)} to ${num(B.hi,1)}`,'points')}</div>`+
+  intervals(rows,{margin:v.m>0?v.m:null,marginLabel:`margin +${nice(v.m)}`,aria:'Confidence intervals for the difference',refLabel:'no difference'})+
+  say(`Same best estimate, two studies. With ${v.n} per arm the interval ${word(A)}. With ${n2} per arm the interval ${word(B)}. That is not disagreement: the smaller study simply cannot rule out either no difference or a large one, up to ${num(B.hi,1)} points.`);
+  if(v.m>0) h+=`<p><strong>Non-inferiority.</strong> The upper end of the interval is ${num(A.hi,1)} points, ${A.hi<v.m?`below the margin of ${nice(v.m)}. The new drug can be called “not unacceptably worse” on this measure.`:`above the margin of ${nice(v.m)}. The data still allow an unacceptable excess of harm, so non-inferiority is not shown.`}</p>`;
+  return h+cant('Whether the difference matters clinically. That depends on how severe the events were. This simple interval is also less accurate when events are very rare or groups are small.')+
+  why('How much confidence to place in a result, and whether more data are needed before acting.','“Not significant” is read as “no harm”, and the largest harm the data still allow is never discussed.');
+ }});
+
+/* ---- Chapter 8 ---- */
+tool({n:8, chapter:'How many people do we need?', name:'Zero events and the rule of three',
+ blurb:'Find the highest rate still plausible after zero cases, and the chance a study would catch a rare harm.',
+ intro:'Zero events is not proof of zero risk. Put in how many people were treated with no cases seen. The tool gives the upper plausible rate (the rule of three), the chance this many people would catch a harm of a given rarity, and how many you would need to be fairly sure of seeing one case.',
+ fields:[
+  {k:'n',label:'People treated, with zero cases seen',def:300,min:1},
+  {k:'r',label:'A true rate to test: 1 in …',def:1000,min:2},
+  {k:'p',type:'select',label:'How sure do you want to be of seeing at least one case?',def:0.95,options:[[0.8,'80%'],[0.9,'90%'],[0.95,'95%'],[0.99,'99%']]}
+ ],
+ calc(v){
+  const up=3/v.n, rr=1/v.r, catchP=1-Math.pow(1-rr,v.n), need=Math.ceil(Math.log(1-v.p)/Math.log(1-rr));
+  const pts=[]; const maxN=Math.max(need*1.2,v.n*1.5); for(let i=0;i<=60;i++){ const N=maxN*i/60; pts.push([N,1-Math.pow(1-rr,N)]); }
+  return `<div class="big">${stat('Upper plausible rate',`1 in ${nice(1/up,0)}`,`3 ÷ ${v.n.toLocaleString()} = ${nice(up*100,2)}%`)}${stat(`Chance of seeing a 1-in-${v.r.toLocaleString()} harm`,pct(catchP,0),`with ${v.n.toLocaleString()} people`)}${stat(`People needed for ${pct(v.p,0)} chance`,need.toLocaleString(),`about 3 × ${v.r.toLocaleString()} for 95%`)}</div>`+
+  lineChart([{pts,color:D()}],{y0:0,y1:1,yTicks:[0,.25,.5,.75,1],yFmt:y=>pct(y,0),xTicks:[0,Math.round(maxN/2),Math.round(maxN)],xFmt:x=>Math.round(x).toLocaleString(),xLabel:`People treated (true rate 1 in ${v.r.toLocaleString()})`,hlines:[{y:v.p,color:css('--good'),label:`${pct(v.p,0)} chance`}],aria:'Chance of seeing at least one case'})+
+  say(`With zero cases in ${v.n.toLocaleString()} people, the true rate could still be as high as about <b>1 in ${nice(1/up,0)}</b>. The defensible label wording is “No cases were observed in ${v.n.toLocaleString()} treated participants”, not “the product does not cause it”.`)+
+  cant('Whether a rate as high as the upper plausible value would be acceptable. That depends on how severe the harm is and on the benefit (Chapter 18).')+
+  why('What a label or briefing can honestly say about a harm nobody has seen yet.','“Not seen” becomes “does not occur”, and later reports undermine trust in the label.');
+ }});
+
+/* ---- Chapter 9 ---- */
+tool({n:9, chapter:'When did it happen?', name:'Time-to-event step builder',
+ blurb:'Build a Kaplan–Meier curve step by step and see how few people are left late in follow-up.',
+ intro:'Censoring means we stopped watching, not that nothing happened. Enter, for each time interval, how many people had a first event and how many left follow-up without one. The tool builds the curve and the number still being followed, so you can see which part of the curve is solid.',
+ fields:[
+  {k:'n0',label:'People at the start',def:500,min:1},
+  {k:'rows',type:'textarea',rows:6,label:'One line per interval: end of interval, events, people who left follow-up (censored)',def:'4, 15, 5\n8, 5, 30\n16, 6, 120\n26, 5, 150\n52, 4, 140',hint:'The first two lines are the chapter’s numbers; later lines are made up to show the thinning out. Lines starting with # are ignored.'},
+  {k:'unit',type:'text',label:'Time unit',def:'weeks'}
+ ],
+ calc(v){
+  const rows=parseRows(v.rows,3).map(r=>r.map(Number)); let atRisk=v.n0, S=1, t0=0; const pts=[[0,1]], tab=[], marks=[];
+  for(const [t,e,c] of rows){ if(atRisk<=0) break; const step=1-e/atRisk; S*=step; tab.push({t0,t,atRisk,e,c,step,S}); pts.push([t,S]); if(c>0) marks.push([t,S]); atRisk=atRisk-e-c; t0=t; }
+  if(!tab.length) return '<p class="muted">Enter at least one interval line.</p>';
+  const last=tab[tab.length-1], minS=Math.min(...pts.map(p=>p[1]));
+  let h=lineChart([{pts,color:D(),step:true,marks}],{y0:Math.max(0,Math.floor((minS-0.02)*20)/20),y1:1,yFmt:y=>pct(y,0),xTicks:[0,...tab.map(r=>r.t)],xLabel:`${v.unit} since first dose (open circles: people left follow-up)`,aria:'Kaplan–Meier curve'});
+  h+=`<div class="tablewrap"><table class="t"><tr><th>Interval</th><th>Still followed at start</th><th>Events</th><th>Left follow-up</th><th>Share free of event at end</th></tr>${tab.map(r=>`<tr><td>${r.t0} to ${r.t} ${esc(v.unit)}</td><td class="num">${r.atRisk.toLocaleString()}</td><td class="num">${r.e}</td><td class="num">${r.c}</td><td class="num">${pct(r.S,1)}</td></tr>`).join('')}</table></div>`;
+  const firstTwo=tab.length>1?tab[0].step*tab[1].step:tab[0].step;
+  h+=say(`Each step multiplies: for example ${nice(tab[0].step,3)}${tab[1]?` × ${nice(tab[1].step,3)} = ${nice(firstTwo,3)}`:''}, so ${pct(firstTwo,1)} were still free of the event by ${esc(String(tab[Math.min(1,tab.length-1)].t))} ${esc(v.unit)}. By the last interval only <b>${last.atRisk.toLocaleString()}</b> people were still being followed, so the late part of the curve rests on far fewer people than the start.`);
+  return h+cant('Whether the people who left had a different risk from those who stayed. Look at reasons for leaving, arm by arm.')+
+  why('Which part of the curve is solid enough to act on, and when prescribers should watch most closely.','A dramatic late step, built on a handful of patients, drives a decision it cannot support.');
+ }});
+
+/* ---- Chapter 10 ---- */
+tool({n:10, chapter:'What question is the trial answering?', name:'Estimand switcher',
+ blurb:'See how counting rescue medicine one way or another changes the treatment effect.',
+ intro:'How you count rescue treatment decides which question the result answers. The treatment policy estimand counts everyone as they were, rescue included. The hypothetical estimand asks what would have happened without rescue. Change the share rescued and watch the two answers move apart.',
+ fields:[
+  {k:'drug',label:'New drug: average change (e.g. HbA1c, points)',def:-0.8,step:0.1},
+  {type:'group',label:'Placebo arm',color:C},
+  {k:'res',label:'% of placebo participants given rescue medicine',def:25,min:0,max:100},
+  {k:'un',label:'Average change in those not rescued',def:-0.1,step:0.1},
+  {k:'rc',label:'Average change in those rescued',def:-1.3,step:0.1}
+ ],
+ calc(v){
+  const r=v.res/100, tp=(1-r)*v.un+r*v.rc, hy=v.un, dTP=v.drug-tp, dHY=v.drug-hy;
+  return `<div class="big">${stat('Treatment policy difference',num(dTP,2),'everyone counted as they were, rescue included')}${stat('Hypothetical difference',num(dHY,2),'as if rescue had not been available')}</div>`+
+  bars([{label:'Treatment policy',value:Math.abs(dTP),color:D(),text:num(dTP,2)+' points'},{label:'Hypothetical',value:Math.abs(dHY),color:css('--accent'),text:num(dHY,2)+' points'}],{aria:'Size of benefit under two estimands'})+
+  `<p>Placebo arm under treatment policy: ${nice(1-r,2)} × ${num(v.un,1)} + ${nice(r,2)} × ${num(v.rc,1)} = ${num(tp,2)}. Under the hypothetical strategy, placebo is taken as ${num(hy,1)}.</p>`+
+  say(`Both numbers are “right”: they answer different questions. Treatment policy asks what happens when patients are offered the drug in a world where rescue exists (${num(dTP,2)}). The hypothetical asks what the drug does if rescue were not used (${num(dHY,2)}). With ${nice(v.res)}% rescued, the gap between them is ${num(Math.abs(dTP-dHY),2)} points. Rescue also changes the safety picture: rescue medicine can cause harms, such as low blood sugar, that are then counted in the placebo arm.`)+
+  cant('Whether the hypothetical assumption is right. It cannot be checked from the data, which is why sensitivity analyses matter (Chapter 11).')+
+  why('Which handling of rescue and stopping matches the question that matters to patients and regulators.','The size of a benefit or harm depends on an unstated choice, and two teams argue for weeks over results that are both correct.');
+ }});
+
+/* ---- Chapter 11 ---- */
+tool({n:11, chapter:'What about the people who left?', name:'Missing data tipping point',
+ blurb:'Assume what happened to people who stopped early and find how bad it would have to be to erase the result.',
+ intro:'Every analysis fills in the missing people somehow. Put in the share who stayed and their average result in each arm, then choose what you assume for those who left (0 means they returned to where they started). The tool shows the result under your assumption and the tipping point where the benefit disappears.',
+ fields:[
+  {type:'group',label:'New drug',color:D},
+  {k:'sA',label:'% who stayed to the end',def:85,min:0,max:100},{k:'mA',label:'Average result in those who stayed (% weight lost)',def:9.0,step:0.1},{k:'xA',label:'Assumed result in those who left',def:0,step:0.5},
+  {type:'group',label:'Placebo',color:C},
+  {k:'sB',label:'% who stayed to the end',def:95,min:0,max:100},{k:'mB',label:'Average result in those who stayed',def:2.0,step:0.1},{k:'xB',label:'Assumed result in those who left',def:0,step:0.5}
+ ],
+ calc(v){
+  const a=v.sA/100,b=v.sB/100, A=a*v.mA+(1-a)*v.xA, B=b*v.mB+(1-b)*v.xB, d=A-B, tip=(1-a)>0?(B-a*v.mA)/(1-a):NaN, comp=v.mA-v.mB;
+  return `<div class="big">${stat('Those who stayed only',num(comp,1)+' points','assumes leavers were just like stayers')}${stat('Under your assumption',num(d,1)+' points',`${num(A,2)} vs ${num(B,2)}`)}${stat('Tipping point for leavers on the new drug',num(tip,1),'result that would erase the benefit')}</div>`+
+  bars([{label:'Stayers only',value:Math.max(0,comp),color:D(),text:num(comp,1)},{label:'Your assumption',value:Math.max(0,d),color:css('--accent'),text:num(d,1)}],{aria:'Difference under each assumption'})+
+  say(isFinite(tip)?`For the benefit to vanish, the ${nice(100-v.sA)}% who left the new drug would need an average result of <b>${num(tip,1)}</b>${tip<0?` (in this example, a weight <i>gain</i> of about ${nice(-tip,0)}%)`:''}. ${tip< -10?'That is implausible, so the conclusion is robust to missing data.':tip<v.xA?'That is not far from your assumption, so the conclusion is fragile.':'Your assumption is already past that point, so the benefit does not survive it.'}`:'Nobody left the new drug, so there is no tipping point to find.')+
+  `<p class="small">Safety side: ${nice(100-v.sA)}% left the new drug versus ${nice(100-v.sB)}% on placebo. People who leave early stop being watched, so their later harms are never recorded. Fewer recorded events in a group that lost people early may mean less watching, not less harm.</p>`+
+  cant('Whether the drug is worth its side effects. A robust result does not settle the benefit–risk question (Chapter 18).')+
+  why('Whether a conclusion is strong enough to rely on under more pessimistic assumptions about the people who left.','A result that collapses under a reasonable worst case is presented as firm.');
+ }});
+
+/* ---- Chapter 12 ---- */
+tool({n:12, chapter:'Looking many times, in many groups', name:'False alarm calculator',
+ blurb:'See how the chance of at least one false alarm climbs as you test more subgroups.',
+ intro:'Search enough subgroups and something will always hit. Put in how many separate comparisons are being made and the threshold for each one. The tool shows the chance that at least one looks “significant” by chance alone, even if the drug has exactly the same effect in everyone.',
+ fields:[
+  {k:'k',label:'Number of subgroups or comparisons',def:7,min:1,step:1},
+  {k:'a',type:'select',label:'Threshold for each comparison',def:0.05,options:[[0.1,'10% (p < 0.10)'],[0.05,'5% (p < 0.05)'],[0.01,'1% (p < 0.01)']]}
+ ],
+ calc(v){
+  const k=Math.max(1,Math.round(v.k)), p=1-Math.pow(1-v.a,k), mx=Math.max(30,k), pts=[]; for(let i=1;i<=mx;i++) pts.push([i,1-Math.pow(1-v.a,i)]);
+  return `<div class="big">${stat('Chance of at least one false alarm',pct(p,0),`${k} comparisons at ${pct(v.a,0)}`)}${stat('Expected false alarms',nice(k*v.a,2))}${stat('Stricter threshold for each (Bonferroni)',pct(v.a/k,2),'one simple way to keep the overall chance near '+pct(v.a,0))}</div>`+
+  lineChart([{pts,color:D(),dots:false,marks:[[k,p]]}],{y0:0,y1:1,x0:1,x1:mx,yTicks:[0,.25,.5,.75,1],yFmt:y=>pct(y,0),xTicks:[1,Math.round(mx/2),mx],xLabel:'Number of comparisons',aria:'Chance of at least one false alarm'})+
+  say(`With ${k} subgroups, there is a <b>${pct(p,0)}</b> chance that at least one looks different by chance alone. That does not make any single finding false. It means one striking subgroup among many needs support: a pre-specified hypothesis, a plausible mechanism, an interaction test, and a repeat in other data. For safety in a vulnerable group, the bar for <i>investigating</i> should still be low.`)+
+  cant('Which of the alarms is real. Multiplicity tells you to be cautious, not that every finding is false.')+
+  why('How seriously to take one striking difference among many comparisons.','Chance findings trigger needless warnings, or a real harm in the most vulnerable patients is waved away as “just a subgroup”.');
+ },
+ extra(){ return `<h3>The chapter's forest plot, in words</h3><p>Overall hazard ratio for major bleeding 1.3. In seven subgroups, those aged 75 and over had 2.1 (interval excluding 1); younger groups 1.1 to 1.35. The supplied interaction test across age groups gave p = 0.08: weak evidence that the effect differs by age. Interaction tests have low power, so “not significant” here does not prove the effect is the same in everyone.</p>`; }});
+
+/* ---- Chapter 13 ---- */
+tool({n:13, chapter:'Reading an adverse event table', name:'People versus episodes',
+ blurb:'Count people affected and episodes separately, and practise telling serious from severe.',
+ intro:'One participant can appear in many rows. Put in how many people had the event and how many episodes there were in total. The tool shows why the percentage of people and the number of episodes can point in opposite directions.',
+ fields:[
+  {k:'ev',type:'text',label:'Event',def:'headache'},
+  {type:'group',label:'New drug',color:D},
+  {k:'nA',label:'People in the group',def:150},{k:'pA',label:'People with at least one episode',def:4},{k:'eA',label:'Total episodes',def:12},
+  {type:'group',label:'Placebo',color:C},
+  {k:'nB',label:'People in the group',def:150},{k:'pB',label:'People with at least one episode',def:6},{k:'eB',label:'Total episodes',def:6}
+ ],
+ calc(v){
+  const a=v.pA/v.nA,b=v.pB/v.nB, ea=v.eA/v.pA, eb=v.eB/v.pB, ra=v.eA/v.nA*100, rb=v.eB/v.nB*100;
+  return `<div class="tablewrap"><table class="t"><tr><th></th><th>New drug</th><th>Placebo</th></tr>
+  <tr><td>People with ${esc(v.ev)} (table percentage)</td><td class="num">${pct(a)}</td><td class="num">${pct(b)}</td></tr>
+  <tr><td>Episodes per person affected</td><td class="num">${nice(ea,1)}</td><td class="num">${nice(eb,1)}</td></tr>
+  <tr><td>Episodes per 100 participants</td><td class="num">${nice(ra,1)}</td><td class="num">${nice(rb,1)}</td></tr></table></div>`+
+  `<div class="fields"><div><div class="small">People with at least one episode</div>${bars([{label:'New drug',value:a,color:D(),text:pct(a)},{label:'Placebo',value:b,color:C(),text:pct(b)}],{labelW:120,aria:'People affected'})}</div><div><div class="small">Episodes per 100 participants</div>${bars([{label:'New drug',value:ra,color:D(),text:nice(ra,1)},{label:'Placebo',value:rb,color:C(),text:nice(rb,1)}],{labelW:120,aria:'Episodes'})}</div></div>`+
+  say(`${a<b&&ra>rb?`Both statements are true. Fewer <i>people</i> had ${esc(v.ev)} on the new drug (${pct(a)} versus ${pct(b)}), but there were more <i>episodes</i> (${nice(ra,1)} versus ${nice(rb,1)} per 100), because each affected person had about ${nice(ea,0)} on average. Say which one you mean.`:`People affected: ${pct(a)} versus ${pct(b)}. Episodes per 100 participants: ${nice(ra,1)} versus ${nice(rb,1)}. Always say whether a statement is about people or about episodes.`}`)+
+  cant('Whether the repeated episodes were caused by the drug. Look at their timing relative to doses.')+
+  why('Whether a harm is mainly about how many people are affected or about how often it keeps coming back.','A drug that causes repeated episodes in a few patients looks no worse than placebo.');
+ },
+ extra(){ const q=[['A mild rash that led to an overnight hospital stay for observation','Serious (it led to hospitalization) but mild in severity.'],['A severe, very painful headache that resolved at home the same day','Severe, but not serious: it did not meet any seriousness criterion.'],['Anaphylaxis treated in the emergency room, judged life-threatening','Serious (life-threatening) and also severe.'],['Moderate nausea for three days, no treatment needed','Neither serious nor severe: moderate intensity, no seriousness criterion met.']];
+  return `<h3>Practice: serious or severe?</h3><p class="muted small">Serious is a regulatory category (death, life-threatening, hospitalization, disability, birth defect, other important medical event). Severe describes intensity. Think, then open.</p>`+q.map(([a,b])=>`<details class="reveal"><summary>${esc(a)}</summary><p>${esc(b)}</p></details>`).join(''); }});
+
+/* ---- Chapter 14 ---- */
+tool({n:14, chapter:'Compare safety with unequal exposure', name:'Exposure-adjusted incidence rate calculator',
+ blurb:'Compare the share of people with an event against the rate per 100 participant-years, and a fixed early window.',
+ intro:'More events can simply mean more watching time. Put in the events, the number of people and the typical time on treatment in each group. The tool compares the familiar percentage (incidence proportion) with the exposure-adjusted incidence rate (EAIR), and with the risk in a window where both groups were fully watched.',
+ fields:[
+  {type:'group',label:'New drug',color:D},
+  {k:'eA',label:'People with a first event',def:8,min:0},{k:'nA',label:'People in the group',def:200,min:1},{k:'wA',label:'Typical weeks on treatment per person',def:24,min:0,hint:'A real analysis adds up each person’s actual time.'},{k:'fA',label:'First events in the early window',def:6,min:0},
+  {type:'group',label:'Comparator',color:C},
+  {k:'eB',label:'People with a first event',def:4,min:0},{k:'nB',label:'People in the group',def:200,min:1},{k:'wB',label:'Typical weeks on treatment per person',def:12,min:0},{k:'fB',label:'First events in the early window',def:1,min:0},
+  {k:'wl',type:'text',label:'Name of the early window',def:'the first 4 weeks'}
+ ],
+ calc(v){
+  const pyA=v.nA*v.wA/52, pyB=v.nB*v.wB/52, ipA=v.eA/v.nA, ipB=v.eB/v.nB, rA=v.eA/pyA*100, rB=v.eB/pyB*100, wA=v.fA/v.nA, wB=v.fB/v.nB;
+  return `<div class="tablewrap"><table class="t"><tr><th>Comparison</th><th>New drug</th><th>Comparator</th><th>Ratio</th></tr>
+  <tr><td>Share of people with an event (incidence proportion)</td><td class="num">${pct(ipA)}</td><td class="num">${pct(ipB)}</td><td class="num">${num(ipA/ipB,1)}</td></tr>
+  <tr><td>Time on treatment</td><td class="num">${nice(pyA,1)} participant-years</td><td class="num">${nice(pyB,1)} participant-years</td><td class="num">${num(pyA/pyB,1)}</td></tr>
+  <tr><td>Rate per 100 participant-years (EAIR)</td><td class="num">${nice(rA,1)}</td><td class="num">${nice(rB,1)}</td><td class="num">${num(rA/rB,1)}</td></tr>
+  <tr><td>Share with an event in ${esc(v.wl)}</td><td class="num">${pct(wA)}</td><td class="num">${pct(wB)}</td><td class="num">${num(wA/wB,1)}</td></tr></table></div>`+
+  `<div class="fields"><div><div class="small">Share of people with an event</div>${bars([{label:'New drug',value:ipA,color:D(),text:pct(ipA)},{label:'Comparator',value:ipB,color:C(),text:pct(ipB)}],{labelW:120,aria:'Incidence proportion'})}</div><div><div class="small">Rate per 100 participant-years</div>${bars([{label:'New drug',value:rA,color:D(),text:nice(rA,1)},{label:'Comparator',value:rB,color:C(),text:nice(rB,1)}],{labelW:120,aria:'EAIR'})}</div></div>`+
+  `<p>How the rate is built: ${v.nA} people × ${nice(v.wA)} weeks ÷ 52 = ${nice(pyA,1)} participant-years; ${v.eA} events ÷ ${nice(pyA,1)} × 100 = ${nice(rA,1)} per 100 participant-years.</p>`+
+  say(`Counting people, the new drug looks <b>${ratioWords(ipA/ipB)}</b>. Putting both groups on the same clock, the rate is <b>${ratioWords(rA/rB)}</b>. ${Math.abs(rA/rB-1)<0.1&&ipA/ipB>1.3?'The “double” came from watching the new drug group for longer. ':''}But in ${esc(v.wl)}, when both groups were fully watched, the risk is ${nice(wA/wB,1)} times as high (${pct(wA)} versus ${pct(wB)}). If the harm is concentrated early, the average rate hides it. Ask when the events happened.`)+
+  cant('Both calculations are correct. Neither says when the events happened, or whether the difference is bigger than chance. Look at the time-to-event chart (Chapter 9).')+
+  why('Whether the risk for each stretch of time on treatment really differs, and whether it is concentrated early.','A difference in follow-up time is mistaken for a difference in risk, in either direction.');
+ }});
+
+/* ---- Chapter 15 ---- */
+tool({n:15, chapter:'Investigating an imbalance', name:'Pooling check and liver plot',
+ blurb:'Spot Simpson’s paradox when studies are added together, and place liver cases on an eDISH-style plot.',
+ intro:'Numbers raise the question; the case review answers it. First, check whether a pooled imbalance comes from simply adding studies with different mixes of patients. Then place each participant’s peak liver tests on a plot to find possible Hy’s law cases.',
+ fields:[
+  {type:'group',label:'Study 1'},
+  {k:'a1',label:'Drug: events',def:20},{k:'n1',label:'Drug: people',def:200},{k:'b1',label:'Placebo: events',def:10},{k:'m1',label:'Placebo: people',def:100},
+  {type:'group',label:'Study 2'},
+  {k:'a2',label:'Drug: events',def:2},{k:'n2',label:'Drug: people',def:100},{k:'b2',label:'Placebo: events',def:4},{k:'m2',label:'Placebo: people',def:200},
+  {type:'group',label:'Liver tests (peak values, as times the upper limit of normal)'},
+  {k:'liv',type:'textarea',rows:6,label:'One line per participant: arm (D or P), peak ALT × ULN, peak bilirubin × ULN',def:'D, 5.2, 2.4\nD, 8.1, 3.0\nD, 3.6, 2.2\nD, 12, 4.1\nD, 4.5, 1.1\nD, 1.2, 0.6\nD, 0.8, 0.5\nP, 3.4, 0.7\nP, 1.1, 0.9\nP, 0.7, 0.4\nP, 2.1, 1.3'}
+ ],
+ calc(v){
+  const r=(e,n)=>e/n, rd1=r(v.a1,v.n1)-r(v.b1,v.m1), rd2=r(v.a2,v.n2)-r(v.b2,v.m2);
+  const w1=v.n1*v.m1/(v.n1+v.m1), w2=v.n2*v.m2/(v.n2+v.m2), mh=(w1*rd1+w2*rd2)/(w1+w2);
+  const cA=(v.a1+v.a2)/(v.n1+v.n2), cB=(v.b1+v.b2)/(v.m1+v.m2);
+  let h=`<div class="tablewrap"><table class="t"><tr><th></th><th>Drug</th><th>Placebo</th><th>Difference</th></tr>
+  <tr><td>Study 1</td><td class="num">${v.a1}/${v.n1} (${pct(r(v.a1,v.n1))})</td><td class="num">${v.b1}/${v.m1} (${pct(r(v.b1,v.m1))})</td><td class="num">${num(rd1*100,1)} points</td></tr>
+  <tr><td>Study 2</td><td class="num">${v.a2}/${v.n2} (${pct(r(v.a2,v.n2))})</td><td class="num">${v.b2}/${v.m2} (${pct(r(v.b2,v.m2))})</td><td class="num">${num(rd2*100,1)} points</td></tr>
+  <tr><td><strong>Simply added together</strong></td><td class="num">${v.a1+v.a2}/${v.n1+v.n2} (${pct(cA)})</td><td class="num">${v.b1+v.b2}/${v.m1+v.m2} (${pct(cB)})</td><td class="num">${num((cA-cB)*100,1)} points</td></tr>
+  <tr><td><strong>Compared within each study, then combined</strong></td><td></td><td></td><td class="num">${num(mh*100,1)} points</td></tr></table></div>`;
+  h+=say(Math.abs((cA-cB)-mh)>0.01?`Adding the studies together gives a ${num((cA-cB)*100,1)}-point difference, but comparing within each study first gives <b>${num(mh*100,1)}</b>. The pooled imbalance comes from the drug arm containing more patients from the higher-risk study. This is Simpson’s paradox.`:`Simple adding and proper pooling agree here (${num((cA-cB)*100,1)} and ${num(mh*100,1)} points), so the mix of studies is not distorting the picture.`);
+  h+=`<p class="small muted">Combined using Mantel–Haenszel weights, one standard way to compare within studies and then combine.</p>`;
+  const pts=parseRows(v.liv,3).map(x=>({arm:x[0].toUpperCase()[0],alt:parseFloat(x[1]),bil:parseFloat(x[2])})).filter(p=>p.alt>0&&p.bil>0);
+  const W=520,H=360,l=50,rr=16,t=14,b=44, lx=x=>l+(W-l-rr)*(Math.log10(x)+1)/(Math.log10(100)+1), ly=y=>t+(H-t-b)*(1-(Math.log10(y)+1)/(Math.log10(20)+1));
+  let s=`<svg class="chart" viewBox="0 0 ${W} ${H}" style="max-width:560px" role="img" aria-label="Liver test plot">`;
+  s+=`<rect x="${lx(3)}" y="${t}" width="${W-rr-lx(3)}" height="${ly(2)-t}" fill="${css('--bad')}" opacity=".08"/>`;
+  [0.1,1,3,10,100].forEach(x=>{ s+=`<line x1="${lx(x)}" x2="${lx(x)}" y1="${t}" y2="${H-b}" stroke="${x===3?css('--bad'):css('--grid')}" ${x===3?'stroke-dasharray="5 4"':''}/><text x="${lx(x)}" y="${H-b+15}" text-anchor="middle" font-size="11">${x}</text>`; });
+  [0.1,1,2,10].forEach(y=>{ s+=`<line x1="${l}" x2="${W-rr}" y1="${ly(y)}" y2="${ly(y)}" stroke="${y===2?css('--bad'):css('--grid')}" ${y===2?'stroke-dasharray="5 4"':''}/><text x="${l-6}" y="${ly(y)+4}" text-anchor="end" font-size="11">${y}</text>`; });
+  s+=`<text x="${(l+W)/2}" y="${H-8}" text-anchor="middle" font-size="12">Peak ALT, × upper limit of normal</text><text x="14" y="${(t+H-b)/2}" text-anchor="middle" font-size="12" transform="rotate(-90 14 ${(t+H-b)/2})">Peak bilirubin, × ULN</text>`;
+  s+=`<text x="${W-rr-6}" y="${t+16}" text-anchor="end" font-size="12" fill="${css('--bad')}">possible Hy’s law</text>`;
+  pts.forEach(p=>{ s+=`<circle cx="${lx(clamp(p.alt,0.1,100))}" cy="${ly(clamp(p.bil,0.1,20))}" r="6" fill="${p.arm==='D'?D():C()}" opacity=".85"/>`; });
+  s+='</svg>';
+  const hyD=pts.filter(p=>p.arm==='D'&&p.alt>=3&&p.bil>=2).length, hyP=pts.filter(p=>p.arm!=='D'&&p.alt>=3&&p.bil>=2).length;
+  h+=`<h3>Liver tests: eDISH-style plot</h3>`+legend([[D(),'Drug'],[C(),'Placebo']])+s+
+  say(`<b>${hyD}</b> drug and <b>${hyP}</b> placebo participants are in the upper-right box: ALT at least 3 times and bilirubin at least 2 times the upper limit of normal. Each one needs a case review: timing, other causes such as viral hepatitis or gallstones, and whether alkaline phosphatase was also high (which points away from Hy’s law).`);
+  return h+cant('Whether the studies are similar enough to combine at all, or whether any case was caused by the drug. Those are clinical judgements made in the case review and the analysis plan.')+
+  why('Whether a pooled imbalance is real, and which individual cases need expert review.','A pooling artefact triggers a false alarm, or a true liver signal is missed because nobody plotted the individuals.');
+ }});
+
+/* ---- Chapter 16 ---- */
+tool({n:16, chapter:'Finding signals in spontaneous reports', name:'Disproportionality (PRR) calculator',
+ blurb:'Work out the proportional reporting ratio from a 2 × 2 table, and see what happens when stimulated reports are removed.',
+ intro:'Report counts show who chose to report, not how often harm happened. The proportional reporting ratio (PRR) asks whether an event makes up a bigger share of this drug’s reports than of all other drugs’ reports. Put in the four counts, then remove reports triggered by media attention.',
+ fields:[
+  {type:'group',label:'This drug'},
+  {k:'a',label:'Reports of this event',def:30,min:0},{k:'b',label:'Reports of all other events',def:1970,min:0},
+  {type:'group',label:'All other drugs in the database'},
+  {k:'c',label:'Reports of this event',def:3000,min:0},{k:'d',label:'Reports of all other events',def:997000,min:0},
+  {type:'group',label:'Reports to set aside (for example after a television story)'},
+  {k:'ra',label:'Of this event',def:21,min:0},{k:'rb',label:'Of other events',def:40,min:0},
+  {k:'thr',label:'Screening threshold for the PRR',def:2,min:0},{k:'minc',label:'Minimum number of cases',def:3,min:0}
+ ],
+ calc(v){
+  const prr=(a,b)=>(a/(a+b))/(v.c/(v.c+v.d)), p1=prr(v.a,v.b), a2=v.a-v.ra, b2=v.b-v.rb, p2=prr(a2,b2);
+  const flag=(p,a)=>p>=v.thr&&a>=v.minc;
+  return `<div class="tablewrap"><table class="t"><tr><th></th><th>This event</th><th>All other events</th><th>Share that is this event</th></tr>
+  <tr><td>This drug</td><td class="num">${v.a.toLocaleString()}</td><td class="num">${v.b.toLocaleString()}</td><td class="num">${pct(v.a/(v.a+v.b),2)}</td></tr>
+  <tr><td>All other drugs</td><td class="num">${v.c.toLocaleString()}</td><td class="num">${v.d.toLocaleString()}</td><td class="num">${pct(v.c/(v.c+v.d),2)}</td></tr></table></div>
+  <div class="big">${stat('PRR, all reports',nice(p1,2),flag(p1,v.a)?'above the screening threshold':'below the screening threshold')}${stat('PRR, stimulated reports set aside',nice(p2,2),flag(p2,a2)?'still above the threshold':'below the threshold')}</div>`+
+  bars([{label:'All reports',value:p1,color:D(),text:nice(p1,2)},{label:'Stimulated set aside',value:p2,color:css('--accent'),text:nice(p2,2)}],{aria:'PRR before and after removing stimulated reports'})+
+  say(`This event makes up ${pct(v.a/(v.a+v.b),2)} of this drug’s reports against ${pct(v.c/(v.c+v.d),2)} for all other drugs, a PRR of <b>${nice(p1,1)}</b>. After setting aside ${v.ra+v.rb} stimulated reports, the PRR is <b>${nice(p2,1)}</b>. ${flag(p1,v.a)&&!flag(p2,a2)?'Much of the flag came from the burst of reporting, not necessarily from a change in harm. The case reports still need reading.':flag(p2,a2)?'The flag survives, which makes it a stronger candidate for signal validation.':''}`)+
+  cant('Whether the drug causes the event. Disproportionality says “look here”, not “this is a risk”. A drug with a huge number of reports of one other event can also mask a signal.')+
+  why('Which drug and event pairs deserve a closer look.','A screening flag is treated as proof of harm, or the absence of a flag is treated as proof of safety.');
+ }});
+
+/* ---- Chapter 17 ---- */
+tool({n:17, chapter:'Comparing treatments in the real world', name:'Confounding by indication',
+ blurb:'See how a sicker mix of patients on the newer drug can create a 60% excess that disappears after adjustment.',
+ intro:'In practice treatment is never random: the sickest patients often get the newest drug. Put in the outcome risk for mild and severe patients on each therapy, and how many patients on each were severe. The tool shows the crude comparison and the comparison with both groups given the same mix.',
+ fields:[
+  {type:'group',label:'Newer therapy',color:D},
+  {k:'mA',label:'Risk in mild patients (%)',def:5,min:0,max:100},{k:'sA',label:'Risk in severe patients (%)',def:20,min:0,max:100},{k:'fA',label:'% of users who are severe',def:70,min:0,max:100},
+  {type:'group',label:'Older therapy',color:C},
+  {k:'mB',label:'Risk in mild patients (%)',def:5,min:0,max:100},{k:'sB',label:'Risk in severe patients (%)',def:20,min:0,max:100},{k:'fB',label:'% of users who are severe',def:30,min:0,max:100},
+  {type:'group',label:'Adjustment'},
+  {k:'std',label:'Common mix to compare at: % severe',def:50,min:0,max:100}
+ ],
+ calc(v){
+  const mix=(m,s,f)=>(f/100)*s+(1-f/100)*m, cA=mix(v.mA,v.sA,v.fA), cB=mix(v.mB,v.sB,v.fB), aA=mix(v.mA,v.sA,v.std), aB=mix(v.mB,v.sB,v.std);
+  return `<div class="big">${stat('Crude: newer vs older',`${nice(cA,1)}% vs ${nice(cB,1)}%`,`ratio ${nice(cA/cB,2)}`)}${stat(`Same mix (${nice(v.std)}% severe)`,`${nice(aA,1)}% vs ${nice(aB,1)}%`,`ratio ${nice(aA/aB,2)}`)}</div>`+
+  bars([{label:'Crude: newer',value:cA,color:D(),text:nice(cA,1)+'%'},{label:'Crude: older',value:cB,color:C(),text:nice(cB,1)+'%'},{label:'Same mix: newer',value:aA,color:D(),text:nice(aA,1)+'%'},{label:'Same mix: older',value:aB,color:C(),text:nice(aB,1)+'%'}],{labelW:170,aria:'Crude versus adjusted risk'})+
+  say(`The crude comparison makes the newer therapy look <b>${ratioWords(cA/cB)}</b> (${nice((cA/cB-1)*100,0)}% ${cA>=cB?'more':'less'}). Giving both groups the same mix of mild and severe patients, it is <b>${ratioWords(aA/aB)}</b>. ${Math.abs(aA/aB-1)<0.05&&Math.abs(cA/cB-1)>0.1?'The whole excess came from who was given the drug, not from the drug.':''}`)+
+  cant('Whether severity was the only difference between the groups. Other unmeasured differences may remain (residual confounding). Look also for detection, selection and prevalent-user bias.')+
+  why('Whether a worse outcome on a drug is caused by the drug or by the sicker patients who were given it.','A useful drug is wrongly blamed, or a harmful one is cleared because the people taking it happened to be healthier.');
+ },
+ extra(){ return `<h3>Other biases to ask about</h3><div class="tablewrap"><table class="t"><tr><th>Bias</th><th>What happens</th><th>Example</th></tr><tr><td>Confounding by indication</td><td>The reason for treatment affects the outcome</td><td>Sicker patients get the newer drug</td></tr><tr><td>Detection bias</td><td>The outcome is looked for more in one group</td><td>More liver tests on a monitored drug, so more abnormal results found</td></tr><tr><td>Selection bias</td><td>Who enters or stays is linked to treatment and outcome</td><td>Patients who did badly stopped and are no longer captured</td></tr><tr><td>Prevalent-user bias</td><td>Long-term users are survivors who tolerated the drug</td><td>Comparing long-term users with new starters</td></tr><tr><td>Residual confounding</td><td>Differences remain after adjustment</td><td>Frailty, smoking or severity not in the data</td></tr></table></div>`; }});
+
+/* ---- Chapter 18 ---- */
+tool({n:18, chapter:'Weighing benefit and risk across the lifecycle', name:'Benefit–risk balance',
+ blurb:'Put benefits and harms on one scale per 1,000 patients, weigh them, and find the tipping point.',
+ intro:'Put benefits and harms on the same absolute scale before weighing them. Enter the events prevented and the extra harms caused per 1,000 patients per year, with the least favourable ends of their ranges, and how much worse one benefit event is than one harm. The tool shows the net balance and how much the weight would have to change to reverse it.',
+ fields:[
+  {type:'group',label:'Benefit',color:D},
+  {k:'bn',type:'text',label:'Benefit event prevented',def:'disabling stroke'},
+  {k:'b',label:'Prevented per 1,000 per year (best estimate)',def:10,min:0},{k:'bl',label:'Least favourable end of the range',def:5,min:0},
+  {type:'group',label:'Harm',color:C},
+  {k:'hn',type:'text',label:'Harm event caused',def:'major bleed'},
+  {k:'h',label:'Extra per 1,000 per year (best estimate)',def:4,min:0},{k:'hh',label:'Least favourable end of the range',def:8,min:0},
+  {type:'group',label:'Weight'},
+  {k:'w',label:'How many times worse is one benefit event than one harm event?',def:3,min:0,step:0.1,hint:'A judgement, ideally informed by patients. 1 means equally bad.'}
+ ],
+ calc(v){
+  const net=v.b*v.w-v.h, worst=v.bl*v.w-v.hh, tip=v.b>0?v.h/v.b:NaN, tipW=v.bl>0?v.hh/v.bl:NaN;
+  const pts=[]; const mx=Math.max(4,v.w*1.5,tipW*1.3||0); for(let i=0;i<=40;i++){ const w=mx*i/40; pts.push([w,v.b*w-v.h]); }
+  const pts2=[]; for(let i=0;i<=40;i++){ const w=mx*i/40; pts2.push([w,v.bl*w-v.hh]); }
+  return `<div class="big">${stat('Weighted benefit',nice(v.b*v.w,1),`${nice(v.b)} × ${nice(v.w)}`)}${stat('Harm',nice(v.h,1),'harm-equivalents')}${stat('Net, best estimate',(net>=0?'+':'')+nice(net,1),'per 1,000 per year')}${stat('Net, least favourable ends',(worst>=0?'+':'')+nice(worst,1))}${stat('Tipping-point weight',nice(tip,2),'below this the balance reverses')}</div>`+
+  lineChart([{pts,color:D()},{pts:pts2,color:C()}],{x0:0,x1:mx,yFmt:y=>nice(y,0),xTicks:[0,1,Math.round(mx/2),Math.round(mx)],xLabel:`Weight: one ${v.bn} counts as this many ${v.hn}s`,hlines:[{y:0,color:css('--muted'),label:'balanced'}],aria:'Net benefit by weight'})+
+  legend([[D(),'Best estimates'],[C(),'Least favourable ends of the ranges']])+
+  say(`With a weight of ${nice(v.w)}, the balance is <b>${net>=0?'+':''}${nice(net,1)}</b> ${esc(v.hn)}-equivalents per 1,000 patients per year, ${net>=0?'in favour of the new drug':'against the new drug'}. It reverses only if a ${esc(v.bn)} is judged less than <b>${nice(tip,2)}</b> times as bad as a ${esc(v.hn)}. At the least favourable ends of both ranges it is ${worst>=0?'+':''}${nice(worst,1)}${worst>=0?', still favourable':', no longer favourable'}.`)+
+  cant('Whether these weights reflect what an individual patient values, or how the balance differs for subgroups such as older patients. Run the tool again with their numbers.')+
+  why('Whether to approve, how to word the label, and for which patients.','The balance is argued in words alone, and nobody can see what new evidence would change it.');
+ }});
+
+</script>
+<script>
+"use strict";
+/* ---------------- router & rendering ---------------- */
+let current=null;
+function fieldHTML(f,val){
+  const id='f_'+f.k;
+  if(f.type==='group') return `<div class="grouphead">${f.color?`<span class="sw" style="background:${f.color()}"></span>`:''}${esc(f.label)}</div>`;
+  let input;
+  if(f.type==='text') input=`<input type="text" id="${id}" data-k="${f.k}" value="${esc(val)}">`;
+  else if(f.type==='textarea') input=`<textarea id="${id}" data-k="${f.k}" rows="${f.rows||6}">${esc(val)}</textarea>`;
+  else if(f.type==='select') input=`<select id="${id}" data-k="${f.k}">${f.options.map(o=>`<option value="${esc(o[0])}"${String(o[0])===String(val)?' selected':''}>${esc(o[1])}</option>`).join('')}</select>`;
+  else input=`<input type="number" inputmode="decimal" id="${id}" data-k="${f.k}" value="${esc(val)}" step="${f.step??'any'}"${f.min!=null?` min="${f.min}"`:''}${f.max!=null?` max="${f.max}"`:''}>`;
+  return `<div class="${f.wide||f.type==='textarea'?'wide':''}"><label for="${id}">${esc(f.label)}</label>${input}${f.hint?`<div class="hint">${esc(f.hint)}</div>`:''}</div>`;
+}
+function readVals(t){ const v={}; t.fields.forEach(f=>{ if(f.type==='group') return; const el=document.getElementById('f_'+f.k); if(!el) return; v[f.k]=(f.type==='text'||f.type==='textarea'||f.type==='select'&&f.str)?el.value:parseFloat(el.value); if(f.type==='select'&&!f.str) v[f.k]=isNaN(parseFloat(el.value))?el.value:parseFloat(el.value); }); return v; }
+function setDefaults(t){ t.fields.forEach(f=>{ if(f.type==='group')return; const el=document.getElementById('f_'+f.k); if(el) el.value=f.def; }); }
+function compute(){ if(!current) return; const v=readVals(current); let h; try{ h=current.calc(v); }catch(e){ h='<p class="muted">Check the numbers above: something could not be worked out.</p>'; console.error(e); } $('#out').innerHTML=h; }
+function home(){
+  current=null; document.title='Biostatistician Workbench: companion to Think Like a Biostatistician';
+  let h=`<div class="brand">Companion tools</div><h1>Biostatistician Workbench</h1>
+  <p class="lede">One small tool for each chapter of <em>Think Like a Biostatistician: Plain-English Logic for Safety and Clinical Professionals</em>. Each opens with the chapter's own made-up numbers already filled in, so you can see the book's example come to life, then change the numbers and watch the conclusion move. There is nothing to install and nothing to calculate by hand.</p>
+  <div class="notice">Educational use only. Not medical advice. All example numbers are fictional.</div>`;
+  TOOLS.forEach(t=>{ if(PARTS[t.n]) h+=`${t.n>1?'</div>':''}<div class="part">${PARTS[t.n]}</div><div class="cards">`;
+    h+=`<a class="card" href="#ch${String(t.n).padStart(2,'0')}"><div class="n">Chapter ${t.n}</div><div class="t">${esc(t.name)}</div><div class="d">${esc(t.blurb)}</div></a>`; });
+  h+='</div>'; $('#view').innerHTML=h; $('#jump').value=''; window.scrollTo(0,0);
+}
+function show(t){
+  current=t; const id='ch'+String(t.n).padStart(2,'0');
+  document.title=`${t.name} · Chapter ${t.n} · Biostatistician Workbench`;
+  const i=TOOLS.indexOf(t), prev=TOOLS[i-1], next=TOOLS[i+1];
+  let h=`<a class="backlink noprint" href="#">← All 18 tools</a>
+  <div class="chap" style="margin-top:.8em">Chapter ${t.n} · ${esc(t.chapter)}</div><h1>${esc(t.name)}</h1>
+  <p class="lede">${t.intro}</p>
+  <div class="panel noprint-inputs"><h3>Your numbers</h3><div class="fields">${t.fields.map(f=>fieldHTML(f,f.def)).join('')}</div>
+  <div class="toolbar"><button id="reset">Reset to the book's example</button><button id="print">Print this page</button></div></div>
+  <div class="panel"><h3>What the numbers say</h3><div class="result" id="out"></div></div>
+  ${t.extra?`<div class="panel">${t.extra()}</div>`:''}
+  <div class="pn noprint"><span>${prev?`<a href="#ch${String(prev.n).padStart(2,'0')}">← Chapter ${prev.n}: ${esc(prev.name)}</a>`:''}</span><span>${next?`<a href="#ch${String(next.n).padStart(2,'0')}">Chapter ${next.n}: ${esc(next.name)} →</a>`:''}</span></div>`;
+  $('#view').innerHTML=h; $('#jump').value=id;
+  $('#view').querySelectorAll('[data-k]').forEach(el=>el.addEventListener('input',compute));
+  $('#reset').onclick=()=>{ setDefaults(t); compute(); };
+  $('#print').onclick=()=>window.print();
+  compute(); window.scrollTo(0,0);
+}
+function route(){ const m=location.hash.match(/^#ch(\d{1,2})$/); const t=m&&TOOLS.find(x=>x.n===parseInt(m[1],10)); t?show(t):home(); }
+function start(){
+  $('#gate').hidden=true; $('#app').hidden=false;
+  $('#jump').innerHTML='<option value="">Go to a chapter…</option>'+TOOLS.map(t=>`<option value="ch${String(t.n).padStart(2,'0')}">${t.n}. ${esc(t.name)}</option>`).join('');
+  $('#jump').onchange=e=>{ location.hash=e.target.value?'#'+e.target.value:''; if(!e.target.value) home(); };
+  window.addEventListener('hashchange',route); let rz; window.addEventListener('resize',()=>{clearTimeout(rz); rz=setTimeout(()=>{ if(current) compute(); },200);}); route();
+}
+$('#theme').onclick=()=>{ const r=document.documentElement; const dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches; r.dataset.theme=dark?'light':'dark'; try{localStorage.setItem('bw-theme',r.dataset.theme);}catch(e){} if(current) compute(); };
+try{ const th=localStorage.getItem('bw-theme'); if(th) document.documentElement.dataset.theme=th; }catch(e){}
+let accepted=false; try{ accepted=localStorage.getItem('bw-accepted')==='1'; }catch(e){}
+if(accepted) start(); else { $('#gate').hidden=false; $('#ack').onchange=e=>{$('#begin').disabled=!e.target.checked;}; $('#begin').onclick=()=>{ try{localStorage.setItem('bw-accepted','1');}catch(e){} start(); }; }
+</script>
+</body>
+</html>
