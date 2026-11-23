@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flashcards · Biostatistician Workbench</title>
+<meta name="description" content="183 free flashcards in 18 decks, one for each chapter of Think Like a Biostatistician: key ideas, common traps, worked examples and the questions to ask. Educational use only. Fictional example data.">
+<link rel="canonical" href="https://abdu94-hash.github.io/biostatistician-workbench/flashcards.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Flashcards · Biostatistician Workbench">
+<meta property="og:description" content="183 plain-English flashcards in 18 decks: key ideas, common traps, worked examples and the questions to ask.">
+<meta property="og:url" content="https://abdu94-hash.github.io/biostatistician-workbench/flashcards.html">
+<meta property="og:image" content="https://abdu94-hash.github.io/biostatistician-workbench/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{
+  --serif: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ink:#1c2126; --ink2:#404b55; --muted:#6d7780;
+  --line:#d8d3c9; --line2:#ebe7df; --paper:#faf9f6; --card:#ffffff; --field:#ffffff;
+  --accent:#1f6f78; --accent2:#e6f1f2; --accent3:#c9e1e3;
+  --drug:#2a78d6; --comp:#eb6834; --good:#2c7a4b; --bad:#b03a2e;
+  --warnbg:#fdf7ea; --warnline:#c8a54a; --warnink:#6b5312;
+  --goodbg:#eaf5ee; --badbg:#fbeeec;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ink:#e8e6e1; --ink2:#c4c7c9; --muted:#9aa3aa;
+    --line:#3a4046; --line2:#2d3237; --paper:#161a1d; --card:#1e2327; --field:#14181b;
+    --accent:#5fb4bc; --accent2:#1d3134; --accent3:#2b4a4e;
+    --drug:#5b9cf0; --comp:#f2875a; --good:#5cbf84; --bad:#e8786b;
+    --warnbg:#2b2618; --warnline:#8b7535; --warnink:#e3cf91;
+    --goodbg:#1c2c23; --badbg:#33211f;
+  }
+}
+:root[data-theme="dark"]{
+  --ink:#e8e6e1; --ink2:#c4c7c9; --muted:#9aa3aa;
+  --line:#3a4046; --line2:#2d3237; --paper:#161a1d; --card:#1e2327; --field:#14181b;
+  --accent:#5fb4bc; --accent2:#1d3134; --accent3:#2b4a4e;
+  --drug:#5b9cf0; --comp:#f2875a; --good:#5cbf84; --bad:#e8786b;
+  --warnbg:#2b2618; --warnline:#8b7535; --warnink:#e3cf91;
+  --goodbg:#1c2c23; --badbg:#33211f;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.25;margin:0 0 .4em}
+h1{font-size:1.6rem} h2{font-size:1.4rem} h3{font-size:1.08rem;margin-top:1.4em}
+p{margin:0 0 .9em} a{color:var(--accent)}
+.muted{color:var(--muted)} .small{font-size:.84rem}
+[hidden]{display:none !important}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+header.top{border-bottom:1px solid var(--line);background:var(--card)}
+header.top .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:.4em 1em;padding-top:.7em;padding-bottom:.7em}
+.brand{font-family:var(--serif);font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.sitename{font-family:var(--serif);font-weight:600;font-size:1.1rem;color:var(--ink);text-decoration:none}
+header.top nav{margin-left:auto;display:flex;flex-wrap:wrap;gap:.5em;align-items:center}
+header.top nav a{font-size:.9rem}
+select.jump{max-width:15rem}
+button{font:inherit;font-size:.88rem;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:4px;padding:.42em .85em;cursor:pointer;min-height:36px}
+button:hover{background:var(--accent2);border-color:var(--accent3)}
+a.btn{display:inline-flex;align-items:center;font-size:.88rem;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:4px;padding:.42em .85em;min-height:36px;text-decoration:none}
+a.btn:hover{background:var(--accent2);border-color:var(--accent3)}
+button.primary,a.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+a.btn.primary:hover{background:var(--accent);filter:brightness(1.08)}
+button.primary:disabled{opacity:.45;cursor:not-allowed}
+button[aria-pressed="true"]{background:var(--accent2);border-color:var(--accent);color:var(--accent)}
+button:disabled{opacity:.45;cursor:not-allowed}
+input,select{font:inherit;font-size:.95rem;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:4px;padding:.4em .5em;width:100%;min-height:36px}
+input:focus,select:focus,button:focus-visible,.flip:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+main{padding:1.6em 0 4em}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.8em;margin-top:1.2em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1em 1.05em;text-decoration:none;color:var(--ink);display:block}
+.card:hover{border-color:var(--accent);box-shadow:0 1px 0 var(--accent3)}
+.card .n{font-family:var(--serif);color:var(--accent);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+.card .t{font-family:var(--serif);font-weight:600;font-size:1.02rem;margin:.15em 0 .5em}
+.card .d{font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:.6em}
+.meter{flex:1;height:6px;border-radius:3px;background:var(--line2);overflow:hidden}
+.meter i{display:block;height:100%;background:var(--good);border-radius:3px}
+.part{font-family:var(--serif);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:1.8em 0 .2em;border-bottom:1px solid var(--line2);padding-bottom:.3em}
+.chap{font-family:var(--serif);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.lede{color:var(--ink2);max-width:72ch}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1.1em 1.1em;margin:1em 0}
+.notice{background:var(--warnbg);border:1px solid var(--warnline);color:var(--warnink);border-radius:5px;padding:.6em .8em;font-size:.84rem;margin:.6em 0}
+.backlink{font-size:.88rem;text-decoration:none}
+.toolbar{display:flex;flex-wrap:wrap;gap:.5em;align-items:center}
+.allrow{display:flex;flex-wrap:wrap;gap:.6em 1em;align-items:center;margin-top:1em}
+footer{border-top:1px solid var(--line);padding:1.4em 0 3em;font-size:.8rem;color:var(--muted)}
+
+/* the flashcard */
+.stage{max-width:680px;margin:1.2em auto 0}
+.status{display:flex;justify-content:space-between;align-items:baseline;gap:1em;font-size:.84rem;color:var(--muted);margin-bottom:.45em}
+.scene{perspective:1400px}
+.flip{display:grid;width:100%;min-height:270px;padding:0;border:0;background:none;text-align:left;cursor:pointer;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.3,.7,.3,1);border-radius:8px}
+.flip:hover{background:none}
+.flip.is-back{transform:rotateY(180deg)}
+.face{grid-area:1/1;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:1.3em 1.4em 1.1em;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 1px 0 var(--line2),0 8px 22px -18px rgba(0,0,0,.45)}
+.face.back{transform:rotateY(180deg);border-color:var(--accent3);background:linear-gradient(var(--accent2),var(--accent2)) top/100% 4px no-repeat,var(--card)}
+.tag{align-self:flex-start;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;border-radius:3px;padding:.2em .55em;border:1px solid var(--accent3);color:var(--accent);background:var(--accent2)}
+.tag.trap{border-color:var(--warnline);color:var(--warnink);background:var(--warnbg)}
+.tag.number{border-color:var(--line);color:var(--ink2);background:var(--paper)}
+.tag.ask{border-color:var(--good);color:var(--good);background:var(--goodbg)}
+.q{font-family:var(--serif);font-size:1.3rem;line-height:1.38;margin:auto 0;padding:.9em 0;color:var(--ink)}
+.a{font-size:1.06rem;line-height:1.55;margin:auto 0;padding:.9em 0;color:var(--ink)}
+.side{font-size:.76rem;color:var(--muted);display:flex;justify-content:space-between;gap:1em}
+.controls{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:.5em;margin-top:.8em}
+.rate{display:grid;grid-template-columns:1fr 1fr;gap:.5em;margin-top:.5em}
+.rate .again{border-color:var(--bad);color:var(--bad)}
+.rate .again:hover{background:var(--badbg)}
+.rate .knew{border-color:var(--good);color:var(--good)}
+.rate .knew:hover{background:var(--goodbg)}
+.bar{height:6px;border-radius:3px;background:var(--line2);overflow:hidden;margin:.2em 0 .9em}
+.bar i{display:block;height:100%;background:var(--good);transition:width .25s}
+.opts{display:flex;flex-wrap:wrap;gap:.5em;justify-content:center;margin-top:1.1em}
+.keys{font-size:.78rem;color:var(--muted);text-align:center;margin-top:.9em}
+kbd{font:inherit;font-size:.74rem;border:1px solid var(--line);border-bottom-width:2px;border-radius:3px;padding:0 .35em;background:var(--card)}
+.done{text-align:center;padding:1.6em 1em}
+.done h2{margin-bottom:.2em}
+.pn{display:flex;justify-content:space-between;gap:1em;margin-top:2em;font-size:.9rem}
+table.t{border-collapse:collapse;width:100%;font-size:.92rem;margin:.5em 0}
+table.t th,table.t td{border-bottom:1px solid var(--line2);padding:.55em .5em;text-align:left;vertical-align:top}
+table.t th{font-size:.78rem;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);font-weight:600}
+table.t td:first-child{width:42%;font-family:var(--serif)}
+.tablewrap{overflow-x:auto}
+
+/* gate */
+.gate{max-width:760px;margin:0 auto;padding:5vh 16px 5rem}
+.gate h1{font-size:1.8rem;margin-bottom:.15em}
+.gate .sub{font-family:var(--serif);font-style:italic;color:var(--ink2);margin-bottom:1.6em}
+.gate ul{padding-left:1.2em;color:var(--ink2)} .gate li{margin-bottom:.5em}
+.ackbox{display:flex;gap:.6em;align-items:flex-start;background:var(--accent2);border:1px solid var(--accent3);border-radius:4px;padding:.8em .9em;margin:1.2em 0}
+.ackbox input{width:20px;height:20px;min-height:0;flex:0 0 auto;margin-top:.1em}
+.ackbox label{margin:0;font-size:.95rem;color:var(--ink)}
+
+@media (prefers-reduced-motion: reduce){ .flip{transition:none} .bar i{transition:none} }
+@media print{header.top nav,.toolbar,.pn,.gate,.noprint,.stage{display:none !important} body{background:#fff} tr{break-inside:avoid}}
+@media (max-width:520px){h1{font-size:1.35rem} .q{font-size:1.14rem} .a{font-size:1rem} .flip{min-height:300px} .face{padding:1.1em 1.05em .9em}}
+</style>
+</head>
+<body>
+
+<div id="gate" class="gate" hidden>
+  <div class="brand">Selim Medical Press</div>
+  <h1>Biostatistician Workbench</h1>
+  <div class="sub">Flashcards for <em>Think Like a Biostatistician: Plain-English Logic for Safety and Clinical Professionals</em> by Dr Hafez Selim, MD, PhD</div>
+  <div class="panel">
+    <p><strong>Before you begin.</strong> These flashcards help you practise the logic in each chapter. They do not make decisions.</p>
+    <ul>
+      <li><strong>Educational use only.</strong> Not medical advice, not clinical decision support, and not for the care of any patient.</li>
+      <li><strong>All example numbers are made up</strong> for teaching, like the numbers in the book. They describe no real product, trial or patient.</li>
+      <li><strong>Nothing leaves your browser.</strong> There is no sign-in and no tracking. Your progress is kept only on this device.</li>
+      <li>The views expressed are the author's personal views only and do not represent any current or former employer, client, institution, professional society or regulatory body.</li>
+    </ul>
+    <div class="ackbox"><input type="checkbox" id="ack"><label for="ack">I understand that this is an educational tool only.</label></div>
+    <button class="primary" id="begin" disabled>Begin</button>
+  </div>
+</div>
+
+<div id="app" hidden>
+<header class="top"><div class="wrap">
+  <div><div class="brand">Selim Medical Press</div><a class="sitename" href="./">Biostatistician Workbench</a></div>
+  <nav class="noprint">
+    <a href="./">Tools</a>
+    <select class="jump" id="jump" aria-label="Go to a flashcard deck"></select>
+    <button id="theme" title="Switch light or dark" aria-label="Switch light or dark">Light / dark</button>
+  </nav>
+</div></header>
+<main><div class="wrap" id="view"></div></main>
+<footer><div class="wrap">
+  Flashcards for <em>Think Like a Biostatistician: Plain-English Logic for Safety and Clinical Professionals</em>, Dr Hafez Selim, MD, PhD, Selim Medical Press.
+  Educational use only. Not medical advice. Fictional example data. Personal views of the author only.
+  Your progress is stored only in this browser. Corrections: <a href="https://github.com/abdu94-hash/biostatistician-workbench/issues">open an issue on GitHub</a>.
+</div></footer>
+</div>
+
+<script>
+"use strict";
+const DECKS=[{"n":1,"title":"Start with the decision","cards":[["idea","Why is “Is the drug safe?” not a question yet?","It names no population, no harm, no comparator and no time window, so no table can answer it. Until those four are fixed, people argue about different questions."],["idea","What are the four parts of a useful safety question?","For whom (the population), which harm (the event), compared with what (the comparator), and over what period (the time window)."],["number","Serious infections were 3% versus 0.5% in weeks 1 to 4, and 4% versus 2% over 24 weeks. Which figure is right?","Both. Each window answers its own question: early risk at the start of treatment, or overall burden over six months."],["trap","Two time windows give two different gaps. What is the trap?","Picking the window that supports your first instinct. Choose the window from the decision, before you look at the result."],["ask","A report says “3% of patients had a serious infection”. What do you ask first?","Over what time window? 3% over one week and 3% over ten years are very different risks. Then ask: compared with what?"],["idea","What does “start from the decision” mean?","Name what is being decided first: screen, warn, change the label, stop. The decision tells you which population, harm, comparator and window matter."],["ask","The team is deciding whether to screen for infection before the first dose. Which question serves that decision?","Is the risk concentrated in the first weeks of treatment, and in which patients? An overall programme rate suits a brochure update, not a screening decision."],["idea","How does the safety question change across a drug’s life?","Early studies ask whether a harm occurs at all and whether it rises with dose. Larger trials ask how often, compared with what. After launch the questions turn to rare and delayed harms in everyday patients."],["number","A first-in-human study of 40 participants saw no serious infections. What can it tell you?","Whether a harm shows up at all and whether it rises with dose. It cannot rule out a rare harm: a small study usually sees no cases even when the risk is real."],["idea","Which three steps does the course apply to every number?","The decision (what is being decided), the trap (the common misreading), and the defensible conclusion (what you can honestly say, with its limits)."]]},{"n":2,"title":"Which study design answers which question?","cards":[["idea","What can a randomized trial tell you that other sources cannot?","Whether the product causes a difference, because randomization makes the groups comparable. Its limits: few people, short follow-up, selected patients."],["idea","Why does randomization make a comparison fair?","Chance decides who gets which treatment, not a doctor or a patient. The groups start out alike, in the ways we measured and the ways we did not."],["idea","What does blinding protect?","It stops knowledge of the treatment from changing how people behave, report symptoms or judge events. Randomization makes the groups start alike; blinding keeps them assessed alike."],["idea","What is a registry good at?","Measuring how often and when something happens in everyday practice. It follows a known number of people over time, so it has a denominator and long follow-up."],["idea","What are spontaneous reports good at?","Raising alarms. They are fast and cover everyone using the product, so they can catch something new and unexpected. They cannot measure how often it happens."],["number","About 60 fracture reports were received among an estimated 60,000 implanted devices. What does that tell you?","About 1 report per 1,000 devices. That is a reporting rate, not a frequency: most cases are never reported, so the true figure is likely higher."],["trap","“The reporting rate is the upper limit of the risk.” What is wrong?","It is the other way round. A reporting rate is a floor, not a ceiling: it counts who chose to report, not how often the harm happened."],["number","A programme of 1,500 patients saw no cases of a serious skin reaction. Can you say the product does not cause it?","No. Development programmes are sized to show benefit and usually cannot see harms rarer than about one in a few thousand. “Not seen” is not “does not occur”."],["ask","A product has more side effects than placebo but fewer than the standard treatment. Which comparison is valid?","Both. The comparator is the yardstick: worse than nothing, or worse than the alternative. Prescribers usually face the second question."],["ask","Match the source: (a) does it cause the harm, (b) how often over five years, (c) is something new appearing?","(a) A randomized trial. (b) A registry with active follow-up. (c) Spontaneous reports. To compare two products in practice, you need a well-designed comparative study."]]},{"n":3,"title":"Who is in the analysis?","cards":[["idea","What are the three analysis groups in a trial?","Everyone randomized (intention to treat), those who followed the plan (per protocol), and everyone who took at least one dose (the safety group). Each has its own denominator."],["idea","What is the intention-to-treat principle?","Analyse everyone randomized, in the group they were assigned to, whatever happened next. It keeps the fair comparison that randomization created."],["trap","The per-protocol difference is 13 points; the intention-to-treat difference is 10. Extra good news?","Usually not. People who stopped or deviated were often doing less well, so leaving them out flatters the drug."],["idea","Who is in the safety group, and how are they counted?","Everyone who took at least one dose, counted by the treatment they actually received."],["number","Rash occurred in 24 participants. 300 were randomized and 288 took at least one dose. Which percentage belongs in the safety table?","8.3% (24 of 288). Using 300 gives 8.0% and counts 12 people who never took the drug, which makes the side effect look a little rarer than it is."],["number","A participant was randomized to the new drug but withdrew before the first dose. Where does she appear?","In the intention-to-treat efficacy analysis, in her assigned group. Not in the safety table: she could not have reacted to a drug she never took."],["number","A participant randomized to placebo was given the new drug by mistake for the whole trial. How is this person counted?","For efficacy: on placebo, as randomized. For safety: on the new drug, as treated, because the safety question is what that drug did to them."],["trap","Three tables show three different totals for the same arm. Is something wrong?","Probably not. Different analysis groups answer different questions. Check which group each table uses before calling it an error."],["ask","What do you ask of any safety percentage?","Out of whom? The denominator should be the people who were exposed and so could have had the harm, defined the same way in both arms."],["idea","Which result answers “what happens if we offer this drug”?","The one based on everyone randomized. The per-protocol result answers a narrower question about people who followed the plan."]]},{"n":4,"title":"What exactly is the outcome?","cards":[["idea","What makes an event “treatment-emergent”?","It started, or got worse, after the first dose and within the collection window. It is a timing rule, not a judgement about cause."],["number","A headache began three days before the first dose and did not worsen on treatment. Is it in the main adverse event tables?","No. It is not treatment-emergent, because it began before the first dose and did not worsen."],["idea","What is “splitting”?","One clinical problem is coded under several similar terms, so each term shows only a small difference. The imbalance appears only when the terms are grouped."],["ask","Five rash-related terms each look unremarkable. What do you ask for before concluding there is no imbalance?","The related terms grouped together, for example with a standardised MedDRA query (SMQ), as well as one by one."],["number","Infusion reactions: a broad definition gives 18.4% versus 15.2%; a narrow adjudicated one gives 6.0% versus 1.2%. What happened?","The broad definition swept in non-specific symptoms that are common in both arms. That background noise diluted a real difference."],["trap","“The broad definition is the conservative choice.” Why is that a misreading?","Events equally common in both arms pull the ratio towards 1. A broad definition tends to hide a real difference, not protect against missing one."],["idea","What is adjudication?","Experts review each possible case against a written definition and decide whether it counts, ideally without knowing which treatment the person received."],["ask","What most increases your trust in a case definition?","It was written in advance and applied by experts blinded to treatment. A definition chosen after seeing the data can manufacture a difference."],["idea","What is an adverse event of special interest (AESI)?","An event chosen in advance for close monitoring because of how the drug works, how it is given, or what similar drugs have done. It does not have to be serious."],["idea","How can the definition of an event change a signal?","It can create it, hide it or shrink it. Too broad, and a real reaction vanishes in noise. Chosen after looking, and a false one appears."]]},{"n":5,"title":"How to read a summary","cards":[["idea","Mean or median: which one does an extreme value move?","The mean (the average). The median, the middle value, barely moves."],["number","Ten ALT values: 18, 22, 25, 27, 28, 30, 31, 33, 35 and 240. What are the mean and the median?","The mean is about 49 and the median is 29. One person pulls the average up. Do not remove the 240: that is the patient a safety reviewer needs to find."],["trap","Average ALT rose from 28 to 31 units per litre (upper limit 40). Reassuring?","Not on its own. Liver injury usually hits a few people hard, and an average cannot show that. A comfortable average can hide a dangerous extreme."],["ask","What do you ask for instead of the average laboratory value?","How many participants crossed a clinically important threshold, such as 3 times the upper limit of normal, by arm. And the individual values."],["idea","What does “spread” tell you?","How far individual values sit from the middle. Two groups with the same average can have very different spread, and the safety question often lives at the edges."],["idea","What does a dot plot show that a summary cannot?","Every person as one dot. You see the cluster, the spread and the outliers at a glance."],["idea","What is a shift table?","A count of people who moved between categories, for example from normal at baseline to above 3 times the upper limit of normal on treatment."],["number","Shift “normal to above 3 × ULN”: 4 on the new drug and 0 on placebo, out of 200 each. What does this add?","A few people who started normal moved into an important range, on the drug only. The average was not wrong; it answered a different question."],["idea","What is regression to the mean?","People selected because of an extreme value tend to have a less extreme value next time, by chance alone, with no treatment effect at all."],["trap","Patients enrolled because of high blood pressure had lower readings at the next visit, with no control group. Did the treatment work?","Not shown. Regression to the mean produces the same pattern. Only a control group can tell the two apart."],["trap","ALT rose to 4 times the upper limit, then fell to 2 times while still on the drug. Resolved?","Not yet. The fall may partly be natural variability. Review the case, the trend and the comparator before concluding."]]},{"n":6,"title":"How big is the difference?","cards":[["idea","Relative versus absolute effect: what is the difference?","Relative: how many times as high the risk is (a ratio). Absolute: how many extra people are affected, for example per 1,000 over a stated time."],["ask","“The drug triples the risk.” What is missing?","The baseline risk and the absolute difference per 1,000 over a stated time. Tripling a one-in-a-million risk adds almost nothing."],["number","Risk is 2 per 1,000 per year on the new drug and 1 per 1,000 per year on the comparator. Relative and absolute effect?","Relative: double. Absolute: 1 extra case per 1,000 people per year."],["idea","What is the number needed to harm (NNH)?","How many people must be treated, for a stated time, for one extra person to be harmed. It is 1 divided by the absolute risk difference."],["number","2 versus 1 per 1,000 per year. What is the number needed to harm?","1,000 people treated for a year for one extra case. Do not confuse the drug’s own risk (2 per 1,000) with the difference (1 per 1,000)."],["number","The same drug doubles two harms: one with a baseline of 1 in 1,000, the other 1 in 10. How many extra cases per 1,000?","1 extra for the rare harm, 100 extra for the common one. The same ratio, a very different burden."],["idea","When is an odds ratio close to a risk ratio?","Only when the event is rare. For a common event the odds ratio sits further from 1 and overstates the effect."],["trap","An odds ratio of 3.5 for an event seen in 35% of the comparator group. “3.5 times the risk”?","No. For a common event the odds ratio exaggerates. Ask for the risk ratio or the absolute difference."],["trap","“Cuts heart attacks by 30%” and “raises bleeding risk by 0.5 percentage points”. What is the problem?","The benefit is relative and the harm is absolute, which makes the benefit look larger. Put both on the same absolute scale, per 1,000 over the same time."],["ask","What are the two honest lines for a journalist?","One line for the relative effect (“about twice as high”) and one for the absolute effect (“1 extra case per 1,000 people per year”). Always with the baseline and the time period."]]},{"n":7,"title":"How sure can we be?","cards":[["idea","What is a 95% confidence interval, in plain words?","The range of true effects reasonably compatible with the data. Narrow means precise; wide means foggy."],["idea","What does a confidence interval not cover?","Bias. It reflects chance only. A biased study can give a narrow interval around the wrong answer."],["number","Two studies both estimate a 4-point increase in rash. With 500 per arm it is significant; with 100 per arm it is not. Do they disagree?","No. The estimates are the same; the smaller study is simply less precise. Counting one “yes” and one “no” is the vote-counting trap."],["idea","What does p = 0.03 mean?","If the drug truly had no effect, results at least this lopsided would turn up in about 3 of 100 trials of this size by chance."],["trap","“p = 0.03 means there is a 3% chance of no effect.” Right?","No. The p-value is calculated assuming no effect, so it cannot give the probability of it. It also says nothing about how big the effect is."],["trap","“Not significant” means “no risk”. True?","No. It means the data could not rule out no difference. Look at the interval for the largest harm the data still allow."],["number","Hazard ratio for liver injury 1.8 (95% CI 0.7 to 4.6). What can you say?","The data cannot rule out no increase, but they are compatible with up to about a 4.6-fold increase. Give the range, not “no increase”."],["idea","What is a non-inferiority margin?","The largest excess of harm judged acceptable, set before the study."],["number","Non-inferiority margin 1.3. Hazard ratio 1.0, 95% CI 0.7 to 1.6. Is non-inferiority shown?","No. The upper limit (1.6) is above the margin. The whole interval has to sit below it; the central estimate alone is not enough."],["ask","For a harm, which end of the interval do you read first?","The upper end: the largest increase the data still allow. Then ask whether that would be acceptable."]]},{"n":8,"title":"How many people do we need?","cards":[["idea","Why do small studies miss rare harms?","With few people, the most likely result for a rare harm is zero cases, even when the risk is real."],["number","A harm truly affects 1 in 1,000 patients. A trial treats 300. What is the chance of seeing even one case?","About 26%. Most often, no cases at all will be seen."],["idea","What is the rule of three?","If no cases are seen among n people, the true rate could still be as high as about 3 in n."],["number","No cases among 1,000 treated participants. What is the highest rate still plausible?","About 3 in 1,000. Zero seen is not zero risk."],["number","How many people do you need to be about 95% sure of seeing at least one case of a 1-in-1,000 harm?","About 3,000: roughly three times the “one in” number."],["trap","300 people were treated for one week with no liver injury. The harm usually appears after three months. Can you apply the rule of three?","Not safely. The rule assumes everyone was followed long enough to have the event. Here the problem is the follow-up time, not the number of people."],["idea","What is power?","The chance that a study will detect a difference of a given size if it truly exists."],["trap","The trial was powered for efficacy. A harm shows “no significant difference”. Reassuring?","Not necessarily. The trial may have had little power for this harm, so the result may say more about study size than about the drug."],["ask","Zero cases were seen, but the upper plausible rate is not acceptable and trials cannot be made bigger. What is the plan?","Plan other evidence: a larger safety study, a pooled analysis or a registry, and monitor through the risk management plan."],["trap","A harm was “not seen in trials”. What must that not become?","“Does not occur.” Say how many people were studied, for how long, and what rate that can and cannot rule out."]]},{"n":9,"title":"When did it happen?","cards":[["idea","What is censoring?","We stopped watching the person before they had the event. It means “unknown after this point”, not “nothing happened”."],["number","A participant left the study at week 20 without having the event. How does the analysis use them?","As event-free up to week 20. After that they are no longer counted among those at risk."],["idea","What does a Kaplan–Meier curve show?","The share of people still free of the event over time. It drops in a step each time an event happens."],["ask","What do you read beneath the curve?","The number of people still being followed at each time point. It tells you which part of the curve is solid."],["trap","A large step appears at week 50, when only 90 of 500 per arm are still followed. How much weight does it carry?","Little on its own. Late steps rest on few people, so each event makes a large jump."],["idea","What is informative censoring?","People leave for reasons linked to the outcome, such as feeling unwell. Those who remain look healthier, so that arm’s curve is too optimistic."],["idea","What is a hazard ratio, in plain words?","One number comparing how quickly events happen in the two groups, averaged over the whole follow-up."],["number","Serious infections: 40 versus 10 per 100 participant-years in weeks 0 to 4, similar afterwards. One-year hazard ratio 1.4. Best description?","A large early excess, diluted in the one-year figure. Describe the early pattern, not “a steady modest increase”."],["trap","The hazard ratio over the year is 1.0. No difference in risk at any time?","Not necessarily. An average can hide an early excess. Look at the curves and ask when the events happened."],["idea","What is a competing event?","An event, such as death, that stops the event of interest from ever happening."],["number","Hip fractures in very elderly patients: deaths are five times as common as fractures and were treated as ordinary censoring. What is the effect?","Fracture risk is overstated, because the analysis pretends those who died could still fracture later. A cumulative incidence analysis that accounts for deaths is needed."]]},{"n":10,"title":"What question is the trial answering?","cards":[["idea","What is an intercurrent event?","Something that happens after treatment starts and changes what the participant is taking or what the outcome reflects: stopping treatment, rescue medicine, switching."],["idea","What is an estimand?","A precise description of the question a trial is answering, including how events after randomization are handled."],["idea","What are the five parts of an estimand?","The population, the treatments compared, the outcome, how intercurrent events are handled, and the summary measure."],["idea","What does the treatment policy strategy ask?","What will patients assigned this drug actually experience, whatever else follows? Outcomes are used regardless of rescue or stopping."],["idea","What does the hypothetical strategy ask?","What would the drug do if the intercurrent event, such as rescue medicine, had not happened?"],["number","Two analyses of the same trial give HbA1c differences of 0.4 and 0.7 points. Is one of them an error?","Probably not. They answer different estimands, for example treatment policy and hypothetical. Both can be right."],["trap","Two teams argue for weeks over which result is “correct”. What is usually going on?","An unstated choice about how rescue or stopping was handled. Name the question each result answers before comparing them."],["idea","Does rescue medicine remove a participant from the analysis?","Not automatically. How it is handled depends on the estimand. Dropping rescued participants would break randomization."],["idea","What is the safety side of rescue medicine?","Rescue can cause its own harms, such as low blood sugar from insulin. Those are then counted in the arm that received it, often the comparator."],["ask","Hypoglycaemia is unexpectedly common on placebo, and many placebo participants received insulin rescue. What do you ask for?","Hypoglycaemia counts before and after rescue, or a while-on-treatment summary."],["trap","Can the hypothetical assumption be checked from the data?","No. It cannot be checked, which is why sensitivity analyses matter."]]},{"n":11,"title":"What about the people who left?","cards":[["idea","“Every analysis fills in the gaps.” What does that mean?","No analysis avoids missing data. Each one assumes something about the people who left, whether it says so or not."],["trap","“We only analysed completers, so we made no assumption.” True?","No. It assumes those who left would have done as well as those who stayed."],["idea","What are the three reasons data go missing?","By accident, unrelated to anything, like a lost sample. For reasons we can see in the recorded data. For reasons we cannot see, linked to the outcome itself."],["number","People on a weight-loss drug quietly stopped attending when their weight started coming back, and nobody recorded why. Which kind of missing data?","Missing for reasons we cannot see. No analysis can fully correct for it; only sensitivity analyses can probe it."],["idea","What is a sensitivity analysis?","The analysis run again under different, often more pessimistic, assumptions about the missing people, to see whether the conclusion survives."],["number","Main analysis: a 6.8-point benefit. Return-to-baseline analysis: 5.8 points. Both exclude no difference. Conclusion?","The result is robust to plausible pessimistic assumptions. The reasons people stopped are still a finding in their own right."],["idea","What is a tipping-point analysis?","It finds how badly the people who left would have had to do for the benefit to disappear. Then you judge whether that is plausible."],["number","The benefit disappears only if dropouts gained about 38% of body weight. How do you read that?","The result is robust: the tipping point lies far outside the plausible range. It is not a claim about what actually happened."],["trap","One arm lost many participants early, and events were collected for only 30 days after stopping. That arm shows fewer serious events. Safer?","Not shown. That arm was watched for less time, so its harms may be undercounted."],["ask","What do you ask about the people who left a study?","How many, from which arm, when, and why. Stopping because of a side effect is itself safety information."]]},{"n":12,"title":"Looking many times, in many groups","cards":[["idea","What is multiplicity?","The more comparisons you make, the more likely it is that at least one looks “significant” by chance alone."],["number","A safety table compares 40 event terms at the 5% level, with no true differences. How many chance “hits” do you expect?","About 2. At the 5% level, roughly 1 test in 20 crosses the line by chance."],["number","20 separate comparisons at the 5% level, and no real effect anywhere. What is the chance of at least one false alarm?","About 64%."],["trap","Does multiplicity mean every subgroup finding is false?","No. It tells you to be cautious, not to dismiss. A real harm in the most vulnerable patients can be waved away as “just a subgroup”."],["idea","What does a forest plot show?","Each subgroup’s estimate as a point, with its interval as a line, stacked so you can compare them with each other and with the overall result."],["ask","Age 75 and over: hazard ratio 2.1, interval excludes 1. Younger groups: 1.1 to 1.35. What is the right next question?","Does the effect truly differ between subgroups? That needs an interaction test, not the subgroup’s own p-value."],["ask","What makes a subgroup finding more credible?","It was prespecified, it has a plausible mechanism, and it shows up again in another study."],["number","Older patients: interaction p = 0.08, prespecified, plausible mechanism, seen in a second trial. Best response?","Take it seriously. Investigate and consider targeted measures such as dosing or monitoring advice. The threshold for acting on safety in a vulnerable group is lower."],["idea","Why do interim analyses need strict stopping rules?","Every extra look is another chance of a false alarm. Early boundaries demand much stronger evidence than p < 0.05, and they must be set in advance."],["idea","Why do data monitoring committees rarely use rigid statistical rules for safety?","The harm that matters is often unexpected. The committee weighs severity, consistency, plausibility and benefit."]]},{"n":13,"title":"Reading an adverse event table","cards":[["idea","People or episodes: what is the difference?","People: how many participants had the event at least once. Episodes: how many times it happened in total. One participant can appear in many rows."],["number","New drug: 4 participants had 12 headaches. Placebo: 6 participants had 6 headaches. 150 per arm. Which arm is worse?","It depends on the question. Fewer people were affected on the drug (2.7% versus 4%), but there were more episodes (8 versus 4 per 100 participants). Report both."],["idea","Serious versus severe?","Serious is a regulatory category based on outcome: death, life-threatening, hospital admission, disability, birth defect, or another important medical event. Severe describes intensity."],["number","A mild episode of chest pain, kept in hospital overnight for observation. How is it classified?","Mild but serious, because it led to hospital admission."],["number","A severe migraine managed at home. How is it classified?","Severe but not serious. It met no seriousness criterion."],["idea","“Relatedness is a third question.” What does that mean?","Whether the drug caused the event is separate from how intense it was (severity) and what it led to (seriousness)."],["trap","Any adverse event 64%, severe 6%, serious 4.7%. A colleague adds them up to 74.7%. What is wrong?","Rows are not additive. The same participant can appear in several rows, so adding them double-counts. Read each row on its own."],["number","Dizziness: 6.0% of all randomized, 6.3% of all who took a dose, 7.5% of those with a dose and a later visit. What does this show?","The denominator changes the percentage. It must match the question and be the same in both arms. For safety it is usually everyone who took a dose."],["ask","Before you compare two columns of an adverse event table, what do you check?","That both arms use the same kind of denominator, that they were watched over the same window, and whether the rows count people or episodes."],["trap","A drug causes repeated episodes in a few patients. What can a people-only table show?","A drug that looks no worse than placebo. Ask for episodes as well as people."]]},{"n":14,"title":"Compare safety with unequal exposure","cards":[["number","Serious infections: 8 of 200 (4%) on the new drug, 4 of 200 (2%) on control. Typical time on treatment was 24 versus 12 weeks. “Double”?","Not yet. The drug group was watched twice as long, so it had roughly twice the opportunity for events to be recorded."],["idea","What is a participant-year?","One person followed for one year, or two people followed for six months each. It measures watching time."],["idea","What is an exposure-adjusted incidence rate (EAIR)?","Events divided by total time on treatment, for example per 100 participant-years. It puts both groups on the same clock."],["number","8 events in 200 people over 24 weeks; 4 events in 200 people over 12 weeks. What are the rates?","About 9 per 100 participant-years in both groups. For the drug: 200 × 24 ÷ 52 is about 92 participant-years, and 8 ÷ 92 × 100 is about 9."],["idea","What does a single rate assume?","That every week on treatment carries the same risk. All the time goes into one pot."],["trap","Why is the rate not the end of the story?","If the harm is concentrated early, the extra quiet weeks in the longer-followed group dilute it. “The same rate” is compatible with a real early risk."],["ask","After the rate, what do you ask?","When did the events happen? Compare a window in which both groups were fully watched."],["number","First serious infections in weeks 1 to 4, when nearly everyone was still on treatment: 6 versus 1. Similar afterwards. Most defensible conclusion?","A possible early excess. The numbers are small and could be chance, but it is plausible for the mechanism. Review the cases and monitor closely."],["trap","Can exposure adjustment fix unequal collection rules?","No. If one group stopped being watched soon after treatment ended, its events were never recorded. No summary can adjust for a numerator that is incomplete."],["idea","Incidence proportion versus incidence rate?","Proportion: people with the event divided by people treated, the familiar percentage. Rate: events divided by time watched. They can disagree when follow-up differs."]]},{"n":15,"title":"Investigating an imbalance","cards":[["ask","An imbalance appears in a pooled table. What is the first step?","Confirm the numbers: coding, denominators, exposure and timing. Many imbalances disappear, and some grow, once these are checked."],["idea","What is the structured path for investigating an imbalance?","Start with the numbers. Read the cases. Weigh causality. Pool properly. Then decide, document and communicate."],["idea","“Numbers raise the question; the case review answers it.” Why read the cases?","Tables cannot show timing, other causes or the clinical story. The individual cases can."],["idea","What are dechallenge and rechallenge?","Dechallenge: the event resolves when the drug is stopped. Rechallenge: it returns when the drug is restarted. Together they are among the strongest evidence a single case can give."],["idea","What defines a potential Hy’s law case?","ALT at least 3 times and bilirubin at least 2 times the upper limit of normal, without a cholestatic pattern (alkaline phosphatase not raised) and with no other cause found."],["number","Peak ALT 8.5 times the upper limit, peak bilirubin 3.1 times, normal alkaline phosphatase, no other cause found. What is it?","A potential Hy’s law case that needs urgent review, including a check that bilirubin rose after ALT."],["idea","What is an eDISH plot?","Each participant’s peak ALT plotted against peak bilirubin, both as multiples of the upper limit of normal. The upper-right box holds the possible Hy’s law cases."],["number","Four potential Hy’s law cases; three turn out to have other causes. What about the fourth?","Still a significant concern. It needs expert adjudication and enhanced monitoring. One unexplained case can be decisive."],["number","Study 1: 10% versus 10%. Study 2: 2% versus 2%. Adding the counts gives 7.3% versus 4.7%. Why?","Simpson’s paradox. The studies had different randomization ratios and populations, so the pooled drug arm holds more high-risk patients."],["ask","How do you pool studies properly?","Compare within each study first, then combine. Do not simply add the counts together."]]},{"n":16,"title":"Finding signals in spontaneous reports","cards":[["idea","Why can spontaneous reports not give a rate?","Most cases are never reported, and the number of people exposed is only roughly known. A rate needs both."],["idea","What is disproportionality?","A check on whether an event makes up a bigger share of one drug’s reports than of all other drugs’ reports."],["idea","What is the proportional reporting ratio (PRR)?","The share of this drug’s reports that mention the event, divided by the same share for all other drugs."],["number","30 of 2,000 reports for a drug mention neuropathy; 3,000 of 1,000,000 reports for all other drugs do. What is the PRR?","5 (1.5% divided by 0.3%). Neuropathy is a five times larger share of this drug’s reports."],["trap","“A reporting ratio of 3 means the risk is tripled.” Right?","No. It compares shares of reports, not rates in patients. Disproportionality says “look here”, not “this is a risk”."],["idea","What is stimulated (notoriety) reporting?","A jump in reports after publicity, such as a television story, without any change in the real risk. It can also bring real cases forward."],["idea","What is masking?","A drug with a huge number of reports of one event makes every other event a smaller share, which can hide a real signal. Remove the dominant event and repeat the screen."],["trap","There is no disproportionality flag. Proof of safety?","No. A screening flag is not proof of harm, and the absence of a flag is not proof of safety."],["number","After removing stimulated reports the PRR falls below threshold, but eight medically confirmed earlier cases began within three months of starting treatment. Next step?","Validate: check for duplicates, expert case review, a trial and literature search, and an observed-versus-expected analysis."],["idea","What do report counts actually show?","Who chose to report, not how often harm happened. The statistic tells you where to look; the case reports still need reading."]]},{"n":17,"title":"Comparing treatments in the real world","cards":[["idea","Why are real-world comparisons hard?","In practice treatment is never random. Doctors choose, so the groups differ before treatment starts."],["idea","What is confounding by indication?","The reason a patient is given a drug, such as more severe disease, also raises the risk of the outcome. The drug gets the blame for the patients it was given to."],["number","A claims study finds 60% more heart failure admissions on a newer therapy, given at launch mainly to patients who had failed older treatments. Main concern?","Confounding by indication: sicker patients received the newer therapy."],["number","Mild disease: 5% admitted on either therapy. Severe disease: 20% on either. The crude result is 15.5% versus 9.5%. What does the same 50:50 mix give?","12.5% versus 12.5%. The crude gap came from the different mix of patients, not from the therapy."],["idea","What is detection bias?","One group is tested or examined more often, so more problems are found in it, whether or not the drug causes them."],["idea","What is prevalent-user bias?","Long-term users are survivors who tolerated the drug. People who had early harms have already stopped, so the drug looks safer than it is."],["idea","What is a new-user, active-comparator design?","Both groups are followed from their first prescription, and the drug is compared with another treatment for the same condition."],["idea","What is residual confounding?","The imbalance left over after adjustment. Adjustment only balances what was measured."],["number","After a new-user, active-comparator analysis adjusted for severity, the hazard ratio is 1.1 (95% CI 0.9 to 1.3). What can you say?","The crude increase is largely explained by confounding by indication, but residual confounding remains possible. It is not proof of safety."],["trap","Patients on the new drug look worse in real-world data. What is the trap?","Blaming the drug for the sicker patients who received it. The reverse also happens: a harmful drug is cleared because the people taking it were healthier."]]},{"n":18,"title":"Weighing benefit and risk across the lifecycle","cards":[["idea","“Same scale, same page.” What does it mean?","Put benefits and harms on the same absolute scale, such as people per 1,000 per year, and show them side by side."],["trap","A briefing says “40% fewer strokes” and “0.4% more major bleeds”. What is the first problem?","The benefit is relative and the harm is absolute. Convert both to people per 1,000 over the same time before weighing them."],["idea","Why weight the outcomes?","A stroke prevented and a bleed caused are not equally bad. A weight says how many times worse one is than the other. It is a judgement, ideally informed by patients."],["number","10 disabling strokes prevented and 4 major bleeds caused per 1,000 per year. A disabling stroke is weighted 3 times a major bleed. Weighted net benefit?","26 bleed-equivalents per 1,000 per year: 10 × 3 = 30, minus 4."],["number","The same numbers. At what weight for a disabling stroke does the balance tip?","0.4. The balance reverses only if a disabling stroke were judged less than half as bad as a major bleed."],["idea","What is a tipping point in a benefit–risk assessment?","How far a weight or an estimate would have to move to reverse the conclusion. It shows what new evidence would change the decision."],["ask","How do you test the balance against uncertainty?","Run it again with the least favourable ends of both ranges: the smallest plausible benefit and the largest plausible harm."],["ask","“For whom?” Why ask it?","The balance can differ between groups, such as older patients, and between individual patients who value outcomes differently. Run the numbers again for them."],["trap","What goes wrong when the balance is argued in words alone?","Nobody can see what was weighed, or what new evidence would change the conclusion."],["idea","Why does the benefit–risk balance have to be revisited across the lifecycle?","The evidence and the questions change from development to approval to everyday use, so the assessment is repeated as new data arrive."]]}];
+const PARTS={1:'Part I · What are we comparing?',5:'Part II · How big, how sure, how many?',10:'Part III · What question is the trial answering?',13:'Part IV · Reading safety data',16:'Part V · Beyond the trial'};
+const TAGS={idea:'Key idea',trap:'The trap',number:'Worked example',ask:'Ask this'};
+const $=(s,r=document)=>r.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pad=n=>String(n).padStart(2,'0');
+const TOTAL=DECKS.reduce((a,d)=>a+d.cards.length,0);
+
+/* progress: {"<deck>-<card>": 1 (knew it) | 0 (review again)}; kept in this browser only */
+let prog={};
+try{ prog=JSON.parse(localStorage.getItem('bw-flash')||'{}')||{}; }catch(e){ prog={}; }
+function save(){ try{ localStorage.setItem('bw-flash',JSON.stringify(prog)); }catch(e){} }
+const known=d=>d.cards.filter((c,i)=>prog[d.n+'-'+i]===1).length;
+const allCards=()=>DECKS.flatMap(d=>d.cards.map((c,i)=>({d,i,c})));
+
+/* session state */
+let S=null;
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function buildQueue(){
+  let q=S.deck?S.deck.cards.map((c,i)=>({d:S.deck,i,c})):allCards();
+  if(S.missed) q=q.filter(x=>prog[x.d.n+'-'+x.i]!==1);
+  if(S.shuffled) shuffle(q);
+  S.queue=q; S.pos=0; S.back=false; S.finished=false;
+}
+
+function home(){
+  S=null; document.title='Flashcards · Biostatistician Workbench';
+  const k=DECKS.reduce((a,d)=>a+known(d),0);
+  let h=`<div class="brand">Companion flashcards</div><h1>Flashcards</h1>
+  <p class="lede">${TOTAL} cards in 18 decks, one for each chapter of <em>Think Like a Biostatistician</em> and the matching section of the companion course. Each card is a key idea, a common trap, a worked example, or a question worth asking. Read the front, answer in your head, then turn the card over.</p>
+  <div class="notice">Educational use only. Not medical advice. All example numbers are fictional.</div>
+  <div class="allrow"><a class="btn primary" href="#all">Study all ${TOTAL} cards</a>
+  <span class="small muted">${k} of ${TOTAL} marked “knew it” on this device</span>
+  ${k||Object.keys(prog).length?'<button id="resetall">Reset my progress</button>':''}</div>`;
+  DECKS.forEach(d=>{ if(PARTS[d.n]) h+=`${d.n>1?'</div>':''}<div class="part">${PARTS[d.n]}</div><div class="cards">`;
+    const kn=known(d), tot=d.cards.length;
+    h+=`<a class="card" href="#ch${pad(d.n)}"><div class="n">Chapter ${d.n}</div><div class="t">${esc(d.title)}</div><div class="d"><span>${tot} cards</span><span class="meter" aria-hidden="true"><i style="width:${Math.round(kn/tot*100)}%"></i></span><span>${kn} known</span></div></a>`; });
+  h+='</div>'; $('#view').innerHTML=h; $('#jump').value='';
+  const r=$('#resetall'); if(r) r.onclick=()=>{ prog={}; save(); home(); };
+  window.scrollTo(0,0);
+}
+
+function openDeck(d){
+  S={deck:d,missed:false,shuffled:false,list:false}; buildQueue(); frame();
+}
+function frame(){
+  const d=S.deck, id=d?'ch'+pad(d.n):'all';
+  document.title=`${d?d.title+' · Chapter '+d.n:'All cards'} · Flashcards · Biostatistician Workbench`;
+  const i=d?DECKS.indexOf(d):-1, prev=d&&DECKS[i-1], next=d&&DECKS[i+1];
+  let h=`<a class="backlink noprint" href="#">← All 18 decks</a>
+  <div class="chap" style="margin-top:.8em">${d?`Chapter ${d.n} · Flashcards`:'Every chapter · Flashcards'}</div><h1>${d?esc(d.title):'All '+TOTAL+' cards'}</h1>
+  <div id="body"></div>
+  <div class="opts noprint">
+    <button id="o-shuffle" aria-pressed="${S.shuffled}">Shuffle</button>
+    <button id="o-missed" aria-pressed="${S.missed}">Only cards to review</button>
+    <button id="o-list" aria-pressed="${S.list}">${S.list?'Back to cards':'Show as a list'}</button>
+    ${S.list?'<button id="o-print">Print this list</button>':''}
+    <button id="o-restart">Start again</button>
+  </div>
+  ${d?`<p class="small noprint" style="text-align:center;margin-top:1.2em"><a href="./#ch${pad(d.n)}">Try this chapter’s tool: change the numbers and watch the conclusion move →</a></p>`:''}
+  <div class="pn noprint"><span>${prev?`<a href="#ch${pad(prev.n)}">← Chapter ${prev.n}: ${esc(prev.title)}</a>`:''}</span><span>${next?`<a href="#ch${pad(next.n)}">Chapter ${next.n}: ${esc(next.title)} →</a>`:''}</span></div>`;
+  $('#view').innerHTML=h; $('#jump').value=id;
+  $('#o-shuffle').onclick=()=>{ S.shuffled=!S.shuffled; buildQueue(); frame(); };
+  $('#o-missed').onclick=()=>{ S.missed=!S.missed; buildQueue(); frame(); };
+  $('#o-list').onclick=()=>{ S.list=!S.list; frame(); };
+  $('#o-restart').onclick=()=>{ buildQueue(); frame(); };
+  const p=$('#o-print'); if(p) p.onclick=()=>window.print();
+  S.list?list():card();
+}
+
+function list(){
+  const rows=S.queue.map(x=>`<tr><td>${S.deck?'':`<span class="small muted">Ch ${x.d.n} · </span>`}${esc(x.c[1])}</td><td>${esc(x.c[2])}</td></tr>`).join('');
+  $('#body').innerHTML=S.queue.length?`<div class="panel"><div class="tablewrap"><table class="t"><thead><tr><th>Front</th><th>Back</th></tr></thead><tbody>${rows}</tbody></table></div></div>`
+   :`<div class="panel done"><p>No cards left to review here. Turn off “Only cards to review” to see them all.</p></div>`;
+}
+
+function card(){
+  const q=S.queue, body=$('#body');
+  if(!q.length){ body.innerHTML=`<div class="stage"><div class="panel done"><h2>Nothing left to review</h2><p class="muted">You have marked every card here as known. Turn off “Only cards to review” to go through them again.</p></div></div>`; return; }
+  if(S.finished){
+    const scope=S.deck?S.deck.cards.map((c,i)=>S.deck.n+'-'+i):allCards().map(x=>x.d.n+'-'+x.i);
+    const kn=scope.filter(k=>prog[k]===1).length, ag=scope.filter(k=>prog[k]===0).length;
+    const nx=S.deck&&DECKS[DECKS.indexOf(S.deck)+1];
+    body.innerHTML=`<div class="stage"><div class="panel done" tabindex="-1" id="donebox"><h2>End of the deck</h2>
+      <p>${kn} of ${scope.length} marked “knew it”${ag?`, ${ag} to review`:''}.</p>
+      <div class="toolbar" style="justify-content:center">
+        ${ag?'<button class="primary" id="d-missed">Review the ones I missed</button>':''}
+        <button id="d-again">Go through it again</button>
+        ${nx?`<a class="btn" href="#ch${pad(nx.n)}">Next deck: ${esc(nx.title)} →</a>`:''}
+      </div></div></div>`;
+    const m=$('#d-missed'); if(m) m.onclick=()=>{ S.missed=true; buildQueue(); frame(); };
+    $('#d-again').onclick=()=>{ S.missed=false; buildQueue(); frame(); };
+    return;
+  }
+  const x=q[S.pos], key=x.d.n+'-'+x.i, st=prog[key];
+  const kn=q.filter(y=>prog[y.d.n+'-'+y.i]===1).length;
+  body.innerHTML=`<div class="stage">
+    <div class="status"><span>Card ${S.pos+1} of ${q.length}${S.deck?'':` · Chapter ${x.d.n}`}</span><span>${kn} known${st===0?' · marked to review':st===1?' · you knew this one':''}</span></div>
+    <div class="bar" aria-hidden="true"><i style="width:${Math.round(kn/q.length*100)}%"></i></div>
+    <div class="scene"><button class="flip${S.back?' is-back':''}" id="flip" aria-label="Flashcard. Press to turn it over.">
+      <span class="face front" ${S.back?'aria-hidden="true"':''}><span class="tag ${x.c[0]}">${TAGS[x.c[0]]}</span><span class="q">${esc(x.c[1])}</span><span class="side"><span>Front</span><span>Tap to see the answer</span></span></span>
+      <span class="face back" ${S.back?'':'aria-hidden="true"'}><span class="tag ${x.c[0]}">${TAGS[x.c[0]]}</span><span class="a">${esc(x.c[2])}</span><span class="side"><span>Back</span><span>Tap to see the question</span></span></span>
+    </button></div>
+    <div aria-live="polite" class="small" style="position:absolute;left:-9999px">${S.back?'Answer: '+esc(x.c[2]):'Question: '+esc(x.c[1])}</div>
+    <div class="controls"><button id="prev" ${S.pos===0?'disabled':''}>← Previous</button><button class="primary" id="turn">${S.back?'Show the question':'Show the answer'}</button><button id="next">${S.pos===q.length-1?'Finish':'Next →'}</button></div>
+    <div class="rate"><button class="again" id="again">Review again</button><button class="knew" id="knew">I knew it</button></div>
+    <div class="keys noprint"><kbd>Space</kbd> turn · <kbd>←</kbd> <kbd>→</kbd> move · <kbd>1</kbd> review again · <kbd>2</kbd> knew it</div>
+  </div>`;
+  $('#flip').onclick=turn; $('#turn').onclick=turn;
+  $('#prev').onclick=()=>go(-1); $('#next').onclick=()=>go(1);
+  $('#again').onclick=()=>mark(0); $('#knew').onclick=()=>mark(1);
+}
+function turn(){ if(!S||S.list||S.finished||!S.queue.length) return; S.back=!S.back; const f=$('#flip'); if(!f){ card(); return; }
+  f.classList.toggle('is-back',S.back);
+  f.querySelector('.front').toggleAttribute('aria-hidden',S.back); f.querySelector('.back').toggleAttribute('aria-hidden',!S.back);
+  $('#turn').textContent=S.back?'Show the question':'Show the answer';
+  const x=S.queue[S.pos]; $('[aria-live]').textContent=S.back?'Answer: '+x.c[2]:'Question: '+x.c[1];
+}
+function go(n){ if(!S||S.list||S.finished||!S.queue.length) return; const p=S.pos+n; if(p<0) return; if(p>=S.queue.length){ S.finished=true; card(); const b=$('#donebox'); if(b) b.focus(); return; } S.pos=p; S.back=false; card(); $('#flip').focus({preventScroll:true}); }
+function mark(v){ if(!S||S.list||S.finished||!S.queue.length) return; const x=S.queue[S.pos]; prog[x.d.n+'-'+x.i]=v; save(); go(1); }
+
+document.addEventListener('keydown',e=>{
+  if(!S||S.list||e.metaKey||e.ctrlKey||e.altKey) return;
+  const t=e.target.tagName; if(t==='SELECT'||t==='INPUT'||t==='TEXTAREA') return;
+  if(e.key===' '||e.key==='Enter'){ if(t==='BUTTON'&&e.target.id!=='flip') return; if(t==='A') return; e.preventDefault(); turn(); }
+  else if(e.key==='ArrowRight'){ e.preventDefault(); go(1); }
+  else if(e.key==='ArrowLeft'){ e.preventDefault(); go(-1); }
+  else if(e.key==='1'){ mark(0); }
+  else if(e.key==='2'){ mark(1); }
+});
+
+function route(){
+  const h=location.hash;
+  if(h==='#all'){ S={deck:null,missed:false,shuffled:false,list:false}; buildQueue(); frame(); window.scrollTo(0,0); return; }
+  const m=h.match(/^#ch(\d{1,2})$/); const d=m&&DECKS.find(x=>x.n===parseInt(m[1],10));
+  if(d){ openDeck(d); window.scrollTo(0,0); } else home();
+}
+function start(){
+  $('#gate').hidden=true; $('#app').hidden=false;
+  $('#jump').innerHTML='<option value="">Go to a deck…</option><option value="all">All '+TOTAL+' cards</option>'+DECKS.map(d=>`<option value="ch${pad(d.n)}">${d.n}. ${esc(d.title)}</option>`).join('');
+  $('#jump').onchange=e=>{ location.hash=e.target.value?'#'+e.target.value:''; if(!e.target.value) home(); };
+  window.addEventListener('hashchange',route); route();
+}
+$('#theme').onclick=()=>{ const r=document.documentElement; const dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches; r.dataset.theme=dark?'light':'dark'; try{localStorage.setItem('bw-theme',r.dataset.theme);}catch(e){} };
+try{ const th=localStorage.getItem('bw-theme'); if(th) document.documentElement.dataset.theme=th; }catch(e){}
+let accepted=false; try{ accepted=localStorage.getItem('bw-accepted')==='1'; }catch(e){}
+if(accepted) start(); else { $('#gate').hidden=false; $('#ack').onchange=e=>{$('#begin').disabled=!e.target.checked;}; $('#begin').onclick=()=>{ try{localStorage.setItem('bw-accepted','1');}catch(e){} start(); }; }
+</script>
+</body>
+</html>

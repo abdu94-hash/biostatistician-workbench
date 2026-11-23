@@ -143,6 +143,7 @@ footer{border-top:1px solid var(--line);padding:1.4em 0 3em;font-size:.8rem;colo
 <header class="top"><div class="wrap">
   <div><div class="brand">Selim Medical Press</div><a class="sitename" href="#">Biostatistician Workbench</a></div>
   <nav class="noprint">
+    <a href="flashcards.html" style="font-size:.9rem">Flashcards</a>
     <select class="jump" id="jump" aria-label="Go to a chapter tool"></select>
     <button id="theme" title="Switch light or dark" aria-label="Switch light or dark">Light / dark</button>
   </nav>
@@ -704,7 +705,8 @@ function home(){
   current=null; document.title='Biostatistician Workbench: companion to Think Like a Biostatistician';
   let h=`<div class="brand">Companion tools</div><h1>Biostatistician Workbench</h1>
   <p class="lede">One small tool for each chapter of <em>Think Like a Biostatistician: Plain-English Logic for Safety and Clinical Professionals</em>. Each opens with the chapter's own made-up numbers already filled in, so you can see the book's example come to life, then change the numbers and watch the conclusion move. There is nothing to install and nothing to calculate by hand.</p>
-  <div class="notice">Educational use only. Not medical advice. All example numbers are fictional.</div>`;
+  <div class="notice">Educational use only. Not medical advice. All example numbers are fictional.</div>
+  <p class="small" style="margin-top:.9em">New: <a href="flashcards.html">flashcards for every chapter</a>. 183 cards in 18 decks: key ideas, common traps, worked examples and questions to ask.</p>`;
   TOOLS.forEach(t=>{ if(PARTS[t.n]) h+=`${t.n>1?'</div>':''}<div class="part">${PARTS[t.n]}</div><div class="cards">`;
     h+=`<a class="card" href="#ch${String(t.n).padStart(2,'0')}"><div class="n">Chapter ${t.n}</div><div class="t">${esc(t.name)}</div><div class="d">${esc(t.blurb)}</div></a>`; });
   h+='</div>'; $('#view').innerHTML=h; $('#jump').value=''; window.scrollTo(0,0);
@@ -720,6 +722,7 @@ function show(t){
   <div class="toolbar"><button id="reset">Reset to the book's example</button><button id="print">Print this page</button></div></div>
   <div class="panel"><h3>What the numbers say</h3><div class="result" id="out"></div></div>
   ${t.extra?`<div class="panel">${t.extra()}</div>`:''}
+  <p class="small noprint" style="margin-top:1.4em"><a href="flashcards.html#${id}">Practise this chapter with flashcards →</a></p>
   <div class="pn noprint"><span>${prev?`<a href="#ch${String(prev.n).padStart(2,'0')}">← Chapter ${prev.n}: ${esc(prev.name)}</a>`:''}</span><span>${next?`<a href="#ch${String(next.n).padStart(2,'0')}">Chapter ${next.n}: ${esc(next.name)} →</a>`:''}</span></div>`;
   $('#view').innerHTML=h; $('#jump').value=id;
   $('#view').querySelectorAll('[data-k]').forEach(el=>el.addEventListener('input',compute));

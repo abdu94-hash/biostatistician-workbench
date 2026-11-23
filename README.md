@@ -7,7 +7,7 @@ Professionals*, Dr Hafez Selim, MD, PhD, Selim Medical Press.
 
 One small, plain-English tool for each of the book's 18 chapters. Each opens with the chapter's
 own fictional teaching numbers, so readers can see the example come to life, then change the
-numbers and watch the conclusion move. Everything is one self-contained `index.html`: no build
+numbers and watch the conclusion move. The tools are one self-contained `index.html`: no build
 step, no server code, no external requests, no tracking. Nothing a reader types leaves the browser.
 
 ## Tools and links
@@ -35,6 +35,18 @@ step, no server code, no external requests, no tracking. Nothing a reader types 
 
 The home page lists all 18. A link ending in `#chNN` opens that chapter's tool directly (after a
 one-time educational-use notice, which the browser remembers).
+
+## Flashcards
+
+`flashcards.html` holds 183 flashcards in 18 decks, one deck per chapter: key ideas, common traps,
+worked examples and questions to ask. Cards flip, can be shuffled, and can be marked "knew it" or
+"review again"; progress is kept only in the reader's browser. Like the tools, it is one
+self-contained file with no external requests.
+
+- All decks: https://abdu94-hash.github.io/biostatistician-workbench/flashcards.html
+- One chapter's deck: add `#chNN`, for example
+  https://abdu94-hash.github.io/biostatistician-workbench/flashcards.html#ch14
+- Every card in one run: https://abdu94-hash.github.io/biostatistician-workbench/flashcards.html#all
 
 ## Publishing
 
